@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,6 +32,7 @@ public class RegistrationForm extends javax.swing.JFrame {
     final String PASSWORD = "";
     public RegistrationForm() {
         initComponents();
+        this.setJframeIcon();
         this.getContentPane().setBackground(Color.decode("#3598DC"));
     }
 
@@ -60,7 +63,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         errorLabel = new javax.swing.JLabel();
         emailError = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -226,6 +229,8 @@ public class RegistrationForm extends javax.swing.JFrame {
                 }else{
                         addData();
                         JOptionPane.showMessageDialog(this, "Your account has been created successfully", "Great!", JOptionPane.PLAIN_MESSAGE);
+                        new LoginForm().setVisible(true);
+                        this.setVisible(false);
                     }
                     
                     
@@ -282,6 +287,15 @@ public class RegistrationForm extends javax.swing.JFrame {
             match = true;
         }
         return match;
+    }
+    
+     public void setJframeIcon(){
+        String iconDir = "src\\Icons\\logo.png";
+        Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
+        this.setIconImage(icon);
+        this.setTitle("Airline Booking System");
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
     /**
      * @param args the command line arguments
