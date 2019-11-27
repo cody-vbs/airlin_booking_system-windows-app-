@@ -58,6 +58,10 @@ public class FlightResult extends javax.swing.JFrame {
         toLabel = new javax.swing.JLabel();
         fromNameLabel = new javax.swing.JLabel();
         toNameLabel = new javax.swing.JLabel();
+        connectFromLabel = new javax.swing.JLabel();
+        connectFromNameLabel = new javax.swing.JLabel();
+        connectToLabel = new javax.swing.JLabel();
+        connectToNameLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,9 +94,9 @@ public class FlightResult extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(33, 33, 33))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +110,7 @@ public class FlightResult extends javax.swing.JFrame {
         bookArea.setColumns(20);
         bookArea.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         bookArea.setRows(5);
-        bookArea.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        bookArea.setBorder(null);
         jScrollPane2.setViewportView(bookArea);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -125,30 +129,53 @@ public class FlightResult extends javax.swing.JFrame {
         fromNameLabel.setText("jLabel4");
 
         toNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        toNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         toNameLabel.setText("jLabel4");
+
+        connectFromLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        connectFromLabel.setText("jLabel3");
+
+        connectFromNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        connectFromNameLabel.setText("jLabel4");
+
+        connectToLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        connectToLabel.setText("jLabel3");
+
+        connectToNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        connectToNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        connectToNameLabel.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3))
-                            .addComponent(fromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(toLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(connectFromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(connectFromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(connectToLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(connectToNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,20 +184,28 @@ public class FlightResult extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(23, 23, 23)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fromNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(toNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(connectFromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(connectFromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(connectToLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(connectToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jButton1.setText("Proceed");
@@ -385,23 +420,314 @@ public class FlightResult extends javax.swing.JFrame {
             
         }
         String text ="FLIGHT NUMBER.: " +  data[0] +"\n" + "Departure" + "\n" +
-                new GetDate().getFromDate() + " • "  + data[1]+"\n" + "Arrival" + "\n" + new GetDate().getToDate()
+                new GetDate().getFromDate() + " • "  + data[1]+"\n" + "Arrival" + "\n" + new GetDate().getFromDate()
                 + " • " + data[2];
         
         //CEBBCD
         String str1 = data[3].substring(0,3);
         String str2 = data[3].substring(3,6);
         
+        
+//        if((!str1.equals("CEB") && str2.equals("ICN")) && (!str1.equals("CEB") && str2.equals("SIN"))
+//                 && (!str1.equals("CEB") && str2.equals("HND"))){
         fromLabel.setText(str1);
         toLabel.setText(str2);
-        
+//        }
         System.out.println(new GetDate().getFromDate());
         System.out.println(new GetDate().getToDate());
         
-        if(str1.equals("BCD")){
+        if(str1.equals("BCD") && str2.equals("CEB")){
+            bookArea.setText("BACOLOD TO CEBU "+"\n"+text);
             fromNameLabel.setText("Bacolod");
             toNameLabel.setText("Cebu");
+        }else if(str1.equals("BCD") &&  str2.equals("MNL")){
+            bookArea.setText("BACOLOD TO MANILA" + "\n" + text);
+            fromNameLabel.setText("Bacolod");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("TAG") && str2.equals("MNL")){
+            bookArea.setText("BOHOL TO MANILA" + "\n" + text);
+            fromNameLabel.setText("Bohol");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("MPH") && str2.equals("MNL")){
+            bookArea.setText("BORACAY-CATICLAN TO MANILA" +"\n" + text);
+            fromNameLabel.setText("Boracay-Caticlan");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("CGY") && str2.equals("CEB")){
+            bookArea.setText("CAGAYAN DE ORO TO CEBU" + "\n" + text);
+            fromNameLabel.setText("Cagayan de Oro");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("CGY") && str2.equals("MNL")){
+            bookArea.setText("CAGAYAN DE ORO TO MANILA"+"\n" +text);
+            fromNameLabel.setText("Cagayan de Oro");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("CEB") && str2.equals("BCD")){
+            bookArea.setText("CEBU TO BACOLOD "+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("Bacolod");
+        }else if(str1.equals("CEB") && str2.equals("CGY")){
+            bookArea.setText("CEBU TO CAGAYAN DE ORO "+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("Cagayan de Oro");
+        }else if(str1.equals("CEB") && str2.equals("DVO")){
+            bookArea.setText("CEBU TO DAVAO"+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("CEB") && str2.equals("GES")){
+            bookArea.setText("CEBU TO GENERAL SANTOS "+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("General Santos");
+        }else if(str1.equals("CEB") && str2.equals("ILO")){
+            bookArea.setText("CEBU TO ILOILO "+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("Iloilo");
+        }else if(str1.equals("CEB") && str2.equals("ICN")){
+            bookArea.setText("CEBU TO SEOUL-INCHEON "+"\n"+text);
+            //cebu - korea
+            fromLabel.setText("CEB");
+            fromNameLabel.setText("Cebu");
+            toLabel.setText("MNL");
+            toNameLabel.setText("Manila");
+            connectFromLabel.setText("MNL");
+            connectFromNameLabel.setText("Manila");
+            connectToLabel.setText("ICN");
+            connectToNameLabel.setText("Seoul- Incheon");
+        }else if(str1.equals("CEB") && str2.equals("MNL")){
+            bookArea.setText("CEBU TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Cebu");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("CEB") && str2.equals("SIN")){
+            bookArea.setText("CEBU TO SINGAPORE "+"\n"+text);
+            //cebu - singapore
+            fromLabel.setText("CEB");
+            fromNameLabel.setText("Cebu");
+            toLabel.setText("MNL");
+            toNameLabel.setText("Manila");
+            connectFromLabel.setText("MNL");
+            connectFromNameLabel.setText("Manila");
+            connectToLabel.setText("SIN");
+            connectToNameLabel.setText("Singapore");
+        }else if(str1.equals("HND") && str2.equals("CEB")){
+            //cebu - tokyo
+            bookArea.setText("CEBU TO JAPAN TOKYO-HANEDA "+"\n"+text);
+            System.out.println("Tokyo");
+            fromLabel.setText("CEB");
+            fromNameLabel.setText("Cebu");
+            toLabel.setText("MNL");
+            toNameLabel.setText("Manila");
+            connectFromLabel.setText("MNL");
+            connectFromNameLabel.setText("Manila");
+            connectToLabel.setText("HND");
+            connectToNameLabel.setText("Japan Tokyo-Haneda");
+        }else if(str1.equals("CRK") && str2.equals("TAG")){
+            bookArea.setText("CLARK TO BOHOL "+"\n"+text);
+            fromNameLabel.setText("Clark");
+            toNameLabel.setText("Bohol");
+        }else if(str1.equals("CRK") && str2.equals("MPH")){
+            bookArea.setText("CLARK TO BORACAY-CATICLAN "+"\n"+text);
+            fromNameLabel.setText("Clark");
+            toNameLabel.setText("Boracay-Caticlan");
+        }else if(str1.equals("CRK")&& str2.equals("CEB")){
+            bookArea.setText("CLARK TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Clark");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("CRK") && str2.equals("DVO")){
+            bookArea.setText("CLARK TO DAVAO "+"\n"+text);
+            fromNameLabel.setText("Clark");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("CRK") && str2.equals("SIN")){
+            bookArea.setText("CLARK TO SINGAPORE "+"\n"+text);
+            fromNameLabel.setText("Clark");
+            toNameLabel.setText("Singapore");
+        }else if(str1.equals("USU") && str2.equals("CEB")){
+            bookArea.setText("CORON-BUSUANGA TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Coron-Busuanga");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("USU") && str2.equals("MNL")){
+            bookArea.setText("CORON-BUSUANGA TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Coron-Busuanga");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("DVO") && str2.equals("BCD")){
+            bookArea.setText("DAVAO TO BACOLOD "+"\n"+text);
+            fromNameLabel.setText("Davao");
+            toNameLabel.setText("Bacolod");
+        }else if(str1.equals("DVO") && str2.equals("CEB")){
+            bookArea.setText("DAVAO TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Davao");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("DVO") && str2.equals("ILO")){
+            bookArea.setText("DAVAO TO ILOILO "+"\n"+text);
+            fromNameLabel.setText("Davao");
+            toNameLabel.setText("Iloilo");
+        }else if(str1.equals("DVO") && str2.equals("MNL")){
+            bookArea.setText("DAVAO TO MANILA"+"\n"+text);
+            fromNameLabel.setText("Davao");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("DVO") && str2.equals("ZAM")){
+            bookArea.setText("DAVAO TO ZAMBOANGA "+"\n"+text);
+            fromNameLabel.setText("Davao");
+            toNameLabel.setText("Zamboanga");
+        }else if(str1.equals("DGT") && str2.equals("MNL")){
+            bookArea.setText("DUMAGUETE TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Dumaguete");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("GES") && str2.equals("CEB")){
+            bookArea.setText("GENERAL SANTOS TO CEBU "+"\n"+text);
+            fromNameLabel.setText("General Santos");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("GES") && str2.equals("MNL")){
+            bookArea.setText("GENERAL SANTOS TO MANILA "+"\n"+text);
+            fromNameLabel.setText("General Santos");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("ILO") && str2.equals("CGY")){
+            bookArea.setText("ILOILO TO CAGYAN DE ORO "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Cagayan de Oro");
+        }else if(str1.equals("ILO") && str2.equals("CEB")){
+            bookArea.setText("ILOILO TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("ILO") && str2.equals("CRK")){
+            bookArea.setText("ILOILO TO CLARK "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Clark");
+        }else if(str1.equals("ILO") && str2.equals("DVO")){
+            bookArea.setText("ILOILO TO DAVAO "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("ILO") && str2.equals("GES")){
+            bookArea.setText("ILOILO TO GENERAL SANTOS "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("General Santos");
+        }else if(str1.equals("ILO") && str2.equals("MNL")){
+            bookArea.setText("ILOILO TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("ILO") && str2.equals("PPS")){
+            bookArea.setText("ILOILO TO PUERTO PRINCESA "+"\n"+text);
+            fromNameLabel.setText("Iloilo");
+            toNameLabel.setText("Puerto Princesa");
+        }else if(str1.equals("KLO") && str2.equals("CEB")){
+            bookArea.setText("KALIBO TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Kalibo");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("KLO") && str2.equals("MNL")){
+            bookArea.setText("KALIBO TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Kalibo");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("MNL") && str2.equals("BCD")){
+            bookArea.setText("MANILA TO BACOLOD "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Bacolod");
+        }else if(str1.equals("MNL") && str2.equals("BKK")){
+            bookArea.setText("MANILA TO BANGKOK "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Bangkok");
+        }else if(str1.equals("MNL") && str2.equals("TAG")){
+            bookArea.setText("MNAILA TO BOHOL"+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Bohol");
+        }else if(str1.equals("MNL") && str2.equals("BWN")){
+            bookArea.setText("MANILA TO BRUNEI BANDAR SERI BEGAWAN "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Brunei Bandar Seri Begawan");
+        }else if(str1.equals("MNL") && str2.equals("REP")){
+            bookArea.setText("MANILA TO CAMBODIA SIEM REAP "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Cambodia Siem Reap");
+        }else if(str1.equals("MNL") && str2.equals("CEB")){
+            bookArea.setText("MANILA TO CEBU"+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("MNL") && str2.equals("PEK")){
+            bookArea.setText("MANILA TO CHINA BEJING"+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("China Bejing");
+        }else if(str1.equals("MNL") && str2.equals("DVO")){
+            bookArea.setText("MANILA TO DAVAO "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("MNL") && str2.equals("DXB")){
+            bookArea.setText("MANILA TO DUBAI "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Dubai");
+        }else if(str1.equals("MNL") && str2.equals("HAN")){
+            bookArea.setText("MANILA TO VIETNAM-HANOI "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Vietnam-Hanoi");
+        }else if(str1.equals("MNL") && str2.equals("HKG")){
+            bookArea.setText("MANILA TO HONGKONG "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Hongkong");
+        }else if(str1.equals("MNL") && str2.equals("KWI")){
+            bookArea.setText("MANILA TO KUWAIT "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Kuwait");
+        }else if(str1.equals("MNL") && str2.equals("KUL")){
+            bookArea.setText("MANILA TO MALAYSIA KUALA LUMPUR "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Malaysia Kuala Lumpur");
+        }else if(str1.equals("MNL") && str2.equals("PPS")){
+            bookArea.setText("MANILA TO PUERTO PRINCESA "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Puerto Princesa");
+        }else if(str1.equals("MNL") && str2.equals("DOH")){
+            bookArea.setText("MANILA TO QATAR DOHA-HAMAD"+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Qatar Doha-Hamad");
+        }else if(str1.equals("MNL") && str2.equals("SIN")){
+            bookArea.setText("MANILA TO SINGAPORE "+"\n"+text);
+            fromNameLabel.setText("Mania");
+            toNameLabel.setText("Singapore");
+        }else if(str1.equals("MNL") && str2.equals("SYD")){
+            bookArea.setText("MANILA TO AUSTRALIA SYDNEY "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Australia Sydney");
+        }else if(str1.equals("MNL") && str2.equals("TPE")){
+            bookArea.setText("MANILA TO TAIPEI "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Taipei");
+        }else if(str1.equals("MNL") && str2.equals("HND")){
+            bookArea.setText("MANILA TO JAPAN TOKYO-HANEDA "+"\n"+text);
+            fromNameLabel.setText("Manila");
+            toNameLabel.setText("Japan Tokyo-Haneda");
+        }else if(str1.equals("PPS") && str2.equals("CEB")){
+            bookArea.setText("PUERTO PRINCESA TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Puerto Princesa");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("PPS") && str2.equals("CRK")){
+            bookArea.setText("PUERTO PRINCESA TO CLARK "+"\n"+text);
+            fromNameLabel.setText("Puerto Princesa");
+            toNameLabel.setText("Clark");
+        }else if(str1.equals("PPS") && str2.equals("Manila")){
+            bookArea.setText("PUERTO PRINCESA TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Puerto Princesa");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("IAO") && str2.equals("CEB")){
+            bookArea.setText("SIARGAO TO CEBU "+"\n"+text);
+            fromNameLabel.setText("Siargao");
+            toNameLabel.setText("Cebu");
+        }else if(str1.equals("IAO") && str2.equals("CRK")){
+            bookArea.setText("SIARGAO TO CLARK "+"\n"+text);
+            fromNameLabel.setText("Siargao");
+            toNameLabel.setText("Clark");
+        }else if(str1.equals("IAO") && str2.equals("DVO")){
+            bookArea.setText("SIARGAO TO DAVAO "+"\n"+text);
+            fromNameLabel.setText("Siargao");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("IAO") && str2.equals("MNL")){
+            bookArea.setText("SIARGAO TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Siargao");
+            toNameLabel.setText("Manila");
+        }else if(str1.equals("ZAM") && str2.equals("DVO")){
+            bookArea.setText("ZAMBOANGA TO DAVAO "+"\n"+text);
+            fromNameLabel.setText("Zamboanga");
+            toNameLabel.setText("Davao");
+        }else if(str1.equals("ZAM") && str2.equals("MNL")){
+            bookArea.setText("ZAMBOANGA TO MANILA "+"\n"+text);
+            fromNameLabel.setText("Zamboanga");
+            toNameLabel.setText("Manila");
         }
+            
         
         System.out.println(str1);
         System.out.println(str2);
@@ -416,7 +742,7 @@ public class FlightResult extends javax.swing.JFrame {
 //   
 //        System.out.println(data2);
 //        System.out.println(change);
-        bookArea.setText(text);
+        
        
         
     }
@@ -476,6 +802,10 @@ public class FlightResult extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea bookArea;
+    private javax.swing.JLabel connectFromLabel;
+    private javax.swing.JLabel connectFromNameLabel;
+    private javax.swing.JLabel connectToLabel;
+    private javax.swing.JLabel connectToNameLabel;
     private javax.swing.JTable flightTbl;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromNameLabel;
