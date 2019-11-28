@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
@@ -32,6 +33,7 @@ public class SearchFlight extends javax.swing.JFrame {
         initComponents();
         this.setJframeIcon();
         this.getContentPane().setBackground(Color.yellow);
+        this.setSpinnerVal();
         
     }
 
@@ -55,13 +57,13 @@ public class SearchFlight extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         departurePicker = new org.jdesktop.swingx.JXDatePicker();
         jLabel6 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        adultsSpinner = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        childSpinner = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         flightBtn = new javax.swing.JButton();
-        jSpinner4 = new javax.swing.JSpinner();
+        infantsSpinner = new javax.swing.JSpinner();
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -89,12 +91,12 @@ public class SearchFlight extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar.png"))); // NOI18N
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        adultsSpinner.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Adults");
 
-        jSpinner2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        childSpinner.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Child (2-12)");
@@ -114,7 +116,7 @@ public class SearchFlight extends javax.swing.JFrame {
             }
         });
 
-        jSpinner4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        infantsSpinner.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton2.setBackground(new java.awt.Color(70, 134, 246));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -150,18 +152,18 @@ public class SearchFlight extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(adultsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(48, 48, 48)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(childSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(149, 149, 149))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(300, 300, 300)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(infantsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(flightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
@@ -220,14 +222,14 @@ public class SearchFlight extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(infantsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(flightBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(adultsSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(childSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -275,12 +277,42 @@ public class SearchFlight extends javax.swing.JFrame {
         
         //set Dates
         new GetDate().setFromDate(fromDate);
+        
+        //set Spinner Val
+        GetSpinnerVal gv = new GetSpinnerVal();
+        String adult = Integer.toString((int) adultsSpinner.getValue());
+        String child = Integer.toString((int) childSpinner.getValue());
+        String infant = Integer.toString((int)infantsSpinner.getValue());
+        
+        //set all values
+        if(adult.equals("0")){
+            gv.setAdultSpinner("1");
+        }
+        if (child.equals("0")){
+            gv.setChildSpinnerVal("0");
+            
+        }
+        if(infant.equals("0")){
+            gv.setInfantSpinner("0");
+        }else
+        
+        gv.setAdultSpinner(adult);
+        gv.setChildSpinnerVal(child);
+        gv.setInfantSpinner(infant);
+        
+        int infantCount = Integer.parseInt(infant);
       
 
         
         
         try {
-            new FlightResult().setVisible(true);
+            if(infantCount >=1){
+                new InfantChoose().setVisible(true);
+//                new FlightResult().setVisible(true);
+            }else{
+                new FlightResult().setVisible(true);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(SearchFlight.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -296,6 +328,18 @@ public class SearchFlight extends javax.swing.JFrame {
         this.setTitle("Airline Booking System");
         this.setLocationRelativeTo(null);
         
+    }
+      private void setSpinnerVal(){
+        Integer value = new Integer(0); 
+        Integer min = new Integer(0);
+        Integer max = new Integer(100); 
+        Integer step = new Integer(1); 
+        SpinnerNumberModel model = new SpinnerNumberModel(value, min, max, step);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(value,min,max,step);
+        SpinnerNumberModel model3 = new SpinnerNumberModel(value,min,max,step);
+        adultsSpinner.setModel(model);
+        childSpinner.setModel(model2);
+        infantsSpinner.setModel(model3);
     }
      
      
@@ -336,11 +380,14 @@ public class SearchFlight extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner adultsSpinner;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JSpinner childSpinner;
     private org.jdesktop.swingx.JXDatePicker departurePicker;
     private javax.swing.JButton flightBtn;
     private javax.swing.JComboBox<String> fromCombo;
+    private javax.swing.JSpinner infantsSpinner;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -353,9 +400,6 @@ public class SearchFlight extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner4;
     private javax.swing.JComboBox<String> toCombo;
     // End of variables declaration//GEN-END:variables
 }

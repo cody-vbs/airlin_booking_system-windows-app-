@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -30,6 +31,10 @@ public class FlightResult extends javax.swing.JFrame {
         initComponents();
         this.flightTblResult();
         this.setJframeIcon();
+        bookArea.setBorder(null);
+        jPanel3.setVisible(false);
+        jPanel4.setVisible(false);
+       
        
  
     }
@@ -50,19 +55,27 @@ public class FlightResult extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        bookArea = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         fromLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        toLabel = new javax.swing.JLabel();
-        fromNameLabel = new javax.swing.JLabel();
-        toNameLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         connectFromLabel = new javax.swing.JLabel();
         connectFromNameLabel = new javax.swing.JLabel();
+        airplaneLabel1 = new javax.swing.JLabel();
+        fromNameLabel = new javax.swing.JLabel();
+        toLabel = new javax.swing.JLabel();
+        toNameLabel = new javax.swing.JLabel();
         connectToLabel = new javax.swing.JLabel();
+        airplaneLabel2 = new javax.swing.JLabel();
         connectToNameLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        bookArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        qrField = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,7 +109,7 @@ public class FlightResult extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(66, 66, 66))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +119,37 @@ public class FlightResult extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        fromLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel2.setText("Departure");
+
+        connectFromLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        connectFromNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        connectFromNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        airplaneLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        fromNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fromNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        toLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        toNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        toNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        connectToLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+
+        airplaneLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        connectToNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        connectToNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         bookArea.setEditable(false);
         bookArea.setColumns(20);
         bookArea.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -113,99 +157,113 @@ public class FlightResult extends javax.swing.JFrame {
         bookArea.setBorder(null);
         jScrollPane2.setViewportView(bookArea);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel2.setText("Departure");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Got a Promo Code?");
 
-        fromLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        fromLabel.setText("jLabel3");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barcode_ scan.png"))); // NOI18N
+        jButton2.setText("Scan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/airplane.png"))); // NOI18N
-
-        toLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        toLabel.setText("jLabel3");
-
-        fromNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        fromNameLabel.setText("jLabel4");
-
-        toNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        toNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        toNameLabel.setText("jLabel4");
-
-        connectFromLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        connectFromLabel.setText("jLabel3");
-
-        connectFromNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        connectFromNameLabel.setText("jLabel4");
-
-        connectToLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        connectToLabel.setText("jLabel3");
-
-        connectToNameLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        connectToNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        connectToNameLabel.setText("jLabel4");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(fromLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(airplaneLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(connectFromLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(airplaneLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fromNameLabel)
+                                    .addComponent(connectFromNameLabel))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(connectToLabel)
+                            .addComponent(toLabel)
+                            .addComponent(toNameLabel)
+                            .addComponent(connectToNameLabel))
+                        .addGap(38, 38, 38))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(qrField, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addComponent(jLabel3))
+                        .addGap(0, 11, Short.MAX_VALUE))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(qrField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fromLabel)
+                    .addComponent(toLabel)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(airplaneLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fromNameLabel)
+                    .addComponent(toNameLabel))
+                .addGap(61, 61, 61)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(connectFromLabel)
+                    .addComponent(connectToLabel)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(airplaneLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(connectFromNameLabel)
+                    .addComponent(connectToNameLabel))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(toNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(connectFromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(connectFromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(connectToLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(connectToNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(fromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(toNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(connectFromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(connectFromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(connectToLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(connectToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jButton1.setText("Proceed");
@@ -214,6 +272,39 @@ public class FlightResult extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 51));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel4.setText("Booking Total");
+
+        totalLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalLabel.setText("jLabel5");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(125, 125, 125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(totalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,7 +316,9 @@ public class FlightResult extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -235,12 +328,13 @@ public class FlightResult extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,6 +344,11 @@ public class FlightResult extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.getValue();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new WebcamQRCodeScanner().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,70 +518,135 @@ public class FlightResult extends javax.swing.JFrame {
              
             
         }
+        String infant ="";
+        if(new GetRadioButton().rbLap !=null && new GetRadioButton().rbSeat != null){
+        if(new GetRadioButton().getRbLap().isSelected()){
+            infant = new GetInfant().getOnLap();
+            System.out.println(infant);
+        }else if(new GetRadioButton().getRbSeat().isSelected()){
+           infant =  new GetInfant().getOnSeat();
+            System.out.println(infant);
+        }
+        }else{
+            infant = "Infant";
+        }
+        
+        GetSpinnerVal gv = new GetSpinnerVal();
         String text ="FLIGHT NUMBER.: " +  data[0] +"\n" + "Departure" + "\n" +
                 new GetDate().getFromDate() + " • "  + data[1]+"\n" + "Arrival" + "\n" + new GetDate().getFromDate()
-                + " • " + data[2];
+                + " • " + data[2] + "\n" + "Adult: " +gv.getAdultSpinner() + "\n" + "Child: " + gv.getChildSpinnerVal()
+                + "\n" +infant +": " + gv.getInfantSpinner();
         
         //CEBBCD
         String str1 = data[3].substring(0,3);
         String str2 = data[3].substring(3,6);
+        
+        //setting icon in airplane 1
+        String imgDir = "C:\\Users\\syd\\Documents\\NetBeansProjects\\Airline Booking System"
+                + "\\airlin_booking_system-windows-app-\\src\\Icons\\airplane.png";
+        ImageIcon airplane1 = new ImageIcon(imgDir);
+        airplaneLabel1.setIcon(airplane1);
+        
+        
+        //set Jpanel
+        
+        new GetPanel().setMyPanel(jPanel3);
         
         
 //        if((!str1.equals("CEB") && str2.equals("ICN")) && (!str1.equals("CEB") && str2.equals("SIN"))
 //                 && (!str1.equals("CEB") && str2.equals("HND"))){
         fromLabel.setText(str1);
         toLabel.setText(str2);
+        //booking total
+        totalLabel.setText(data[5]);
+        
 //        }
         System.out.println(new GetDate().getFromDate());
         System.out.println(new GetDate().getToDate());
         
         if(str1.equals("BCD") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("BACOLOD TO CEBU "+"\n"+text);
             fromNameLabel.setText("Bacolod");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("BCD") &&  str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("BACOLOD TO MANILA" + "\n" + text);
             fromNameLabel.setText("Bacolod");
             toNameLabel.setText("Manila");
         }else if(str1.equals("TAG") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("BOHOL TO MANILA" + "\n" + text);
             fromNameLabel.setText("Bohol");
             toNameLabel.setText("Manila");
         }else if(str1.equals("MPH") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
             bookArea.setText("BORACAY-CATICLAN TO MANILA" +"\n" + text);
             fromNameLabel.setText("Boracay-Caticlan");
             toNameLabel.setText("Manila");
         }else if(str1.equals("CGY") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CAGAYAN DE ORO TO CEBU" + "\n" + text);
             fromNameLabel.setText("Cagayan de Oro");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("CGY") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CAGAYAN DE ORO TO MANILA"+"\n" +text);
             fromNameLabel.setText("Cagayan de Oro");
             toNameLabel.setText("Manila");
         }else if(str1.equals("CEB") && str2.equals("BCD")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Bacolod");
         }else if(str1.equals("CEB") && str2.equals("CGY")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO CAGAYAN DE ORO "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Cagayan de Oro");
         }else if(str1.equals("CEB") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO DAVAO"+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Davao");
         }else if(str1.equals("CEB") && str2.equals("GES")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO GENERAL SANTOS "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("General Santos");
         }else if(str1.equals("CEB") && str2.equals("ILO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO ILOILO "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Iloilo");
         }else if(str1.equals("CEB") && str2.equals("ICN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO SEOUL-INCHEON "+"\n"+text);
             //cebu - korea
+            airplaneLabel2.setIcon(airplane1);
             fromLabel.setText("CEB");
             fromNameLabel.setText("Cebu");
             toLabel.setText("MNL");
@@ -492,12 +656,19 @@ public class FlightResult extends javax.swing.JFrame {
             connectToLabel.setText("ICN");
             connectToNameLabel.setText("Seoul- Incheon");
         }else if(str1.equals("CEB") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO MANILA "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Manila");
         }else if(str1.equals("CEB") && str2.equals("SIN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CEBU TO SINGAPORE "+"\n"+text);
             //cebu - singapore
+            airplaneLabel2.setIcon(airplane1);
             fromLabel.setText("CEB");
             fromNameLabel.setText("Cebu");
             toLabel.setText("MNL");
@@ -507,7 +678,11 @@ public class FlightResult extends javax.swing.JFrame {
             connectToLabel.setText("SIN");
             connectToNameLabel.setText("Singapore");
         }else if(str1.equals("HND") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             //cebu - tokyo
+            airplaneLabel2.setIcon(airplane1);
             bookArea.setText("CEBU TO JAPAN TOKYO-HANEDA "+"\n"+text);
             System.out.println("Tokyo");
             fromLabel.setText("CEB");
@@ -519,62 +694,106 @@ public class FlightResult extends javax.swing.JFrame {
             connectToLabel.setText("HND");
             connectToNameLabel.setText("Japan Tokyo-Haneda");
         }else if(str1.equals("CRK") && str2.equals("TAG")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CLARK TO BOHOL "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Bohol");
         }else if(str1.equals("CRK") && str2.equals("MPH")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CLARK TO BORACAY-CATICLAN "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Boracay-Caticlan");
         }else if(str1.equals("CRK")&& str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
             bookArea.setText("CLARK TO CEBU "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("CRK") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CLARK TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Davao");
         }else if(str1.equals("CRK") && str2.equals("SIN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CLARK TO SINGAPORE "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Singapore");
         }else if(str1.equals("USU") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CORON-BUSUANGA TO CEBU "+"\n"+text);
             fromNameLabel.setText("Coron-Busuanga");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("USU") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("CORON-BUSUANGA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Coron-Busuanga");
             toNameLabel.setText("Manila");
         }else if(str1.equals("DVO") && str2.equals("BCD")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DAVAO TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Bacolod");
         }else if(str1.equals("DVO") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DAVAO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("DVO") && str2.equals("ILO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DAVAO TO ILOILO "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Iloilo");
         }else if(str1.equals("DVO") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DAVAO TO MANILA"+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Manila");
         }else if(str1.equals("DVO") && str2.equals("ZAM")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DAVAO TO ZAMBOANGA "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Zamboanga");
         }else if(str1.equals("DGT") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("DUMAGUETE TO MANILA "+"\n"+text);
             fromNameLabel.setText("Dumaguete");
             toNameLabel.setText("Manila");
         }else if(str1.equals("GES") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("GENERAL SANTOS TO CEBU "+"\n"+text);
             fromNameLabel.setText("General Santos");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("GES") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("GENERAL SANTOS TO MANILA "+"\n"+text);
             fromNameLabel.setText("General Santos");
             toNameLabel.setText("Manila");
@@ -583,146 +802,254 @@ public class FlightResult extends javax.swing.JFrame {
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Cagayan de Oro");
         }else if(str1.equals("ILO") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("ILO") && str2.equals("CRK")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO CLARK "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Clark");
         }else if(str1.equals("ILO") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Davao");
         }else if(str1.equals("ILO") && str2.equals("GES")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO GENERAL SANTOS "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("General Santos");
         }else if(str1.equals("ILO") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Manila");
         }else if(str1.equals("ILO") && str2.equals("PPS")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ILOILO TO PUERTO PRINCESA "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Puerto Princesa");
         }else if(str1.equals("KLO") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("KALIBO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Kalibo");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("KLO") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("KALIBO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Kalibo");
             toNameLabel.setText("Manila");
         }else if(str1.equals("MNL") && str2.equals("BCD")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bacolod");
         }else if(str1.equals("MNL") && str2.equals("BKK")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO BANGKOK "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bangkok");
         }else if(str1.equals("MNL") && str2.equals("TAG")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MNAILA TO BOHOL"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bohol");
         }else if(str1.equals("MNL") && str2.equals("BWN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO BRUNEI BANDAR SERI BEGAWAN "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Brunei Bandar Seri Begawan");
         }else if(str1.equals("MNL") && str2.equals("REP")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO CAMBODIA SIEM REAP "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Cambodia Siem Reap");
         }else if(str1.equals("MNL") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO CEBU"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("MNL") && str2.equals("PEK")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO CHINA BEJING"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("China Bejing");
         }else if(str1.equals("MNL") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Davao");
         }else if(str1.equals("MNL") && str2.equals("DXB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO DUBAI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Dubai");
         }else if(str1.equals("MNL") && str2.equals("HAN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO VIETNAM-HANOI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Vietnam-Hanoi");
         }else if(str1.equals("MNL") && str2.equals("HKG")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO HONGKONG "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Hongkong");
         }else if(str1.equals("MNL") && str2.equals("KWI")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO KUWAIT "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Kuwait");
         }else if(str1.equals("MNL") && str2.equals("KUL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO MALAYSIA KUALA LUMPUR "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Malaysia Kuala Lumpur");
         }else if(str1.equals("MNL") && str2.equals("PPS")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO PUERTO PRINCESA "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Puerto Princesa");
         }else if(str1.equals("MNL") && str2.equals("DOH")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO QATAR DOHA-HAMAD"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Qatar Doha-Hamad");
         }else if(str1.equals("MNL") && str2.equals("SIN")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO SINGAPORE "+"\n"+text);
             fromNameLabel.setText("Mania");
             toNameLabel.setText("Singapore");
         }else if(str1.equals("MNL") && str2.equals("SYD")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO AUSTRALIA SYDNEY "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Australia Sydney");
         }else if(str1.equals("MNL") && str2.equals("TPE")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO TAIPEI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Taipei");
         }else if(str1.equals("MNL") && str2.equals("HND")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("MANILA TO JAPAN TOKYO-HANEDA "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Japan Tokyo-Haneda");
         }else if(str1.equals("PPS") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("PUERTO PRINCESA TO CEBU "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("PPS") && str2.equals("CRK")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("PUERTO PRINCESA TO CLARK "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Clark");
         }else if(str1.equals("PPS") && str2.equals("Manila")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("PUERTO PRINCESA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Manila");
         }else if(str1.equals("IAO") && str2.equals("CEB")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("SIARGAO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Cebu");
         }else if(str1.equals("IAO") && str2.equals("CRK")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("SIARGAO TO CLARK "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Clark");
         }else if(str1.equals("IAO") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("SIARGAO TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Davao");
         }else if(str1.equals("IAO") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("SIARGAO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Manila");
         }else if(str1.equals("ZAM") && str2.equals("DVO")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ZAMBOANGA TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Zamboanga");
             toNameLabel.setText("Davao");
         }else if(str1.equals("ZAM") && str2.equals("MNL")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             bookArea.setText("ZAMBOANGA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Zamboanga");
             toNameLabel.setText("Manila");
@@ -801,6 +1128,8 @@ public class FlightResult extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel airplaneLabel1;
+    private javax.swing.JLabel airplaneLabel2;
     private javax.swing.JTextArea bookArea;
     private javax.swing.JLabel connectFromLabel;
     private javax.swing.JLabel connectFromNameLabel;
@@ -810,14 +1139,20 @@ public class FlightResult extends javax.swing.JFrame {
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromNameLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField qrField;
     private javax.swing.JLabel toLabel;
     private javax.swing.JLabel toNameLabel;
+    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 }
