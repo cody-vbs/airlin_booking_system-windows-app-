@@ -34,6 +34,7 @@ public class FlightResult extends javax.swing.JFrame {
         bookArea.setBorder(null);
         jPanel3.setVisible(false);
         jPanel4.setVisible(false);
+        jButton3.setEnabled(false);
        
        
  
@@ -76,6 +77,7 @@ public class FlightResult extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -306,6 +308,13 @@ public class FlightResult extends javax.swing.JFrame {
                 .addComponent(totalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
         );
 
+        jButton3.setText("Book Now");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -314,7 +323,8 @@ public class FlightResult extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -329,12 +339,14 @@ public class FlightResult extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -343,12 +355,20 @@ public class FlightResult extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.getValue();
+        //enable book flight button
+        jButton3.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new WebcamQRCodeScanner().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new CustomerDetails().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -541,6 +561,11 @@ public class FlightResult extends javax.swing.JFrame {
         String str1 = data[3].substring(0,3);
         String str2 = data[3].substring(3,6);
         
+        //set str1 and str2 values
+        
+        new GetBookDetails().setStr1(str1);
+        new GetBookDetails().setStr2(str2);
+        
         //setting icon in airplane 1
         String imgDir = "C:\\Users\\syd\\Documents\\NetBeansProjects\\Airline Booking System"
                 + "\\airlin_booking_system-windows-app-\\src\\Icons\\airplane.png";
@@ -553,12 +578,27 @@ public class FlightResult extends javax.swing.JFrame {
         new GetPanel().setMyPanel(jPanel3);
         
         
+        
+        
 //        if((!str1.equals("CEB") && str2.equals("ICN")) && (!str1.equals("CEB") && str2.equals("SIN"))
 //                 && (!str1.equals("CEB") && str2.equals("HND"))){
         fromLabel.setText(str1);
         toLabel.setText(str2);
         //booking total
         totalLabel.setText(data[5]);
+        
+        //set total
+        new GetPaymentInfo().setFair(data[5]);
+        
+        
+        GetBookDetails gd = new GetBookDetails();
+        //set all values
+        gd.setBookText(text);
+        gd.setFrom(str1);
+        gd.setTo(str2);
+        gd.setPrice(totalLabel.getText());
+        
+     
         
 //        }
         System.out.println(new GetDate().getFromDate());
@@ -568,6 +608,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Bacolod");
+            gd.setToName("Cebu");
             bookArea.setText("BACOLOD TO CEBU "+"\n"+text);
             fromNameLabel.setText("Bacolod");
             toNameLabel.setText("Cebu");
@@ -575,6 +617,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Bacolod");
+            gd.setToName("Manila");
             bookArea.setText("BACOLOD TO MANILA" + "\n" + text);
             fromNameLabel.setText("Bacolod");
             toNameLabel.setText("Manila");
@@ -582,12 +626,16 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Bohol");
+            gd.setToName("Manila");
             bookArea.setText("BOHOL TO MANILA" + "\n" + text);
             fromNameLabel.setText("Bohol");
             toNameLabel.setText("Manila");
         }else if(str1.equals("MPH") && str2.equals("MNL")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
+            gd.setFromName("Boracay-Caticlan");
+            gd.setToName("Manila");
             bookArea.setText("BORACAY-CATICLAN TO MANILA" +"\n" + text);
             fromNameLabel.setText("Boracay-Caticlan");
             toNameLabel.setText("Manila");
@@ -595,6 +643,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cagayan de Oro");
+            gd.setToName("Cebu");
             bookArea.setText("CAGAYAN DE ORO TO CEBU" + "\n" + text);
             fromNameLabel.setText("Cagayan de Oro");
             toNameLabel.setText("Cebu");
@@ -602,6 +652,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cagayan de Oro");
+            gd.setToName("Manila");
             bookArea.setText("CAGAYAN DE ORO TO MANILA"+"\n" +text);
             fromNameLabel.setText("Cagayan de Oro");
             toNameLabel.setText("Manila");
@@ -609,6 +661,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("Bacolod");
             bookArea.setText("CEBU TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Bacolod");
@@ -616,6 +670,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("Cagayan de Oro");
             bookArea.setText("CEBU TO CAGAYAN DE ORO "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Cagayan de Oro");
@@ -623,6 +679,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("Cebu");
             bookArea.setText("CEBU TO DAVAO"+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Davao");
@@ -630,6 +688,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("General Santos");
             bookArea.setText("CEBU TO GENERAL SANTOS "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("General Santos");
@@ -637,6 +697,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("Iloilo");
             bookArea.setText("CEBU TO ILOILO "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Iloilo");
@@ -645,7 +707,7 @@ public class FlightResult extends javax.swing.JFrame {
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
             bookArea.setText("CEBU TO SEOUL-INCHEON "+"\n"+text);
-            //cebu - korea
+            //cebu - korea 
             airplaneLabel2.setIcon(airplane1);
             fromLabel.setText("CEB");
             fromNameLabel.setText("Cebu");
@@ -655,10 +717,22 @@ public class FlightResult extends javax.swing.JFrame {
             connectFromNameLabel.setText("Manila");
             connectToLabel.setText("ICN");
             connectToNameLabel.setText("Seoul- Incheon");
+            
+            //set val
+            gd.setFrom("CEB");
+            gd.setTo("MNL");
+            gd.setConnectFrom("MNL");
+            gd.setConnectTo("ICN");
+            gd.setFromName("Cebu");
+            gd.setToName("Manila");
+            gd.setConnectFromName("Manila");
+            gd.setConnectToName("Seoul-Incheon");
         }else if(str1.equals("CEB") && str2.equals("MNL")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Cebu");
+            gd.setToName("Manila");
             bookArea.setText("CEBU TO MANILA "+"\n"+text);
             fromNameLabel.setText("Cebu");
             toNameLabel.setText("Manila");
@@ -697,6 +771,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Clark");
+            gd.setToName("Bohol");
             bookArea.setText("CLARK TO BOHOL "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Bohol");
@@ -704,12 +780,16 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Clark");
+            gd.setToName("Boracay-Caticlan");
             bookArea.setText("CLARK TO BORACAY-CATICLAN "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Boracay-Caticlan");
         }else if(str1.equals("CRK")&& str2.equals("CEB")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
+            gd.setFromName("Clark");
+            gd.setToName("Cebu");
             bookArea.setText("CLARK TO CEBU "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Cebu");
@@ -717,6 +797,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Clark");
+            gd.setToName("Davao");
             bookArea.setText("CLARK TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Davao");
@@ -724,6 +806,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Clark");
+            gd.setToName("Singapor");
             bookArea.setText("CLARK TO SINGAPORE "+"\n"+text);
             fromNameLabel.setText("Clark");
             toNameLabel.setText("Singapore");
@@ -731,6 +815,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Coron-Busuanga");
+            gd.setToName("Cebu");
             bookArea.setText("CORON-BUSUANGA TO CEBU "+"\n"+text);
             fromNameLabel.setText("Coron-Busuanga");
             toNameLabel.setText("Cebu");
@@ -738,6 +824,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Coron-Busuanga");
+            gd.setToName("Manila");
             bookArea.setText("CORON-BUSUANGA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Coron-Busuanga");
             toNameLabel.setText("Manila");
@@ -745,6 +833,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Davao");
+            gd.setToName("Bacolod");
             bookArea.setText("DAVAO TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Bacolod");
@@ -752,6 +842,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Davao");
+            gd.setToName("Cebu");
             bookArea.setText("DAVAO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Cebu");
@@ -759,6 +851,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Davao");
+            gd.setToName("Iloilo");
             bookArea.setText("DAVAO TO ILOILO "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Iloilo");
@@ -766,6 +860,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Davao");
+            gd.setToName("Manila");
             bookArea.setText("DAVAO TO MANILA"+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Manila");
@@ -773,6 +869,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Davao");
+            gd.setToName("Zamboanga");
             bookArea.setText("DAVAO TO ZAMBOANGA "+"\n"+text);
             fromNameLabel.setText("Davao");
             toNameLabel.setText("Zamboanga");
@@ -780,6 +878,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Dumaguete");
+            gd.setToName("Manila");
             bookArea.setText("DUMAGUETE TO MANILA "+"\n"+text);
             fromNameLabel.setText("Dumaguete");
             toNameLabel.setText("Manila");
@@ -787,6 +887,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("General Santos");
+            gd.setToName("Cebu");
             bookArea.setText("GENERAL SANTOS TO CEBU "+"\n"+text);
             fromNameLabel.setText("General Santos");
             toNameLabel.setText("Cebu");
@@ -794,10 +896,17 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("General Santos");
+            gd.setToName("Manila");
             bookArea.setText("GENERAL SANTOS TO MANILA "+"\n"+text);
             fromNameLabel.setText("General Santos");
             toNameLabel.setText("Manila");
         }else if(str1.equals("ILO") && str2.equals("CGY")){
+            new ProgressBar().setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Cagayan de Oro");
             bookArea.setText("ILOILO TO CAGYAN DE ORO "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Cagayan de Oro");
@@ -805,6 +914,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Cebu");
             bookArea.setText("ILOILO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Cebu");
@@ -812,6 +923,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Clark");
             bookArea.setText("ILOILO TO CLARK "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Clark");
@@ -819,6 +932,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Davao");
             bookArea.setText("ILOILO TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Davao");
@@ -826,6 +941,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("General Santos");
             bookArea.setText("ILOILO TO GENERAL SANTOS "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("General Santos");
@@ -833,6 +950,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Manila");
             bookArea.setText("ILOILO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Manila");
@@ -840,6 +959,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Iloilo");
+            gd.setToName("Puerto Princesa");
             bookArea.setText("ILOILO TO PUERTO PRINCESA "+"\n"+text);
             fromNameLabel.setText("Iloilo");
             toNameLabel.setText("Puerto Princesa");
@@ -847,6 +968,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Kalibo");
+            gd.setToName("Cebu");
             bookArea.setText("KALIBO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Kalibo");
             toNameLabel.setText("Cebu");
@@ -854,6 +977,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Kalibo");
+            gd.setToName("Manila");
             bookArea.setText("KALIBO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Kalibo");
             toNameLabel.setText("Manila");
@@ -861,6 +986,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Bacolod");
             bookArea.setText("MANILA TO BACOLOD "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bacolod");
@@ -868,6 +995,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Bangkok");
             bookArea.setText("MANILA TO BANGKOK "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bangkok");
@@ -875,6 +1004,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Bohol");
             bookArea.setText("MNAILA TO BOHOL"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Bohol");
@@ -882,6 +1013,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Bandar Seri Begawan");
             bookArea.setText("MANILA TO BRUNEI BANDAR SERI BEGAWAN "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Brunei Bandar Seri Begawan");
@@ -889,6 +1022,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Cambodia");
             bookArea.setText("MANILA TO CAMBODIA SIEM REAP "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Cambodia Siem Reap");
@@ -896,6 +1031,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Cebu");
             bookArea.setText("MANILA TO CEBU"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Cebu");
@@ -903,6 +1040,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("China Bejing");
             bookArea.setText("MANILA TO CHINA BEJING"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("China Bejing");
@@ -910,6 +1049,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Davao");
             bookArea.setText("MANILA TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Davao");
@@ -917,6 +1058,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Dubai");
             bookArea.setText("MANILA TO DUBAI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Dubai");
@@ -924,6 +1067,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Vietnam-Hanoi");
             bookArea.setText("MANILA TO VIETNAM-HANOI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Vietnam-Hanoi");
@@ -931,6 +1076,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Hongkong");
             bookArea.setText("MANILA TO HONGKONG "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Hongkong");
@@ -938,6 +1085,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Kuwait");
             bookArea.setText("MANILA TO KUWAIT "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Kuwait");
@@ -945,6 +1094,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Malaysia Kuala Lumpur");
             bookArea.setText("MANILA TO MALAYSIA KUALA LUMPUR "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Malaysia Kuala Lumpur");
@@ -952,6 +1103,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Puerto Princesa");
             bookArea.setText("MANILA TO PUERTO PRINCESA "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Puerto Princesa");
@@ -959,6 +1112,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Qatart Doha-Hamad");
             bookArea.setText("MANILA TO QATAR DOHA-HAMAD"+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Qatar Doha-Hamad");
@@ -966,6 +1121,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Singapore");
             bookArea.setText("MANILA TO SINGAPORE "+"\n"+text);
             fromNameLabel.setText("Mania");
             toNameLabel.setText("Singapore");
@@ -973,6 +1130,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Australia Sydney");
             bookArea.setText("MANILA TO AUSTRALIA SYDNEY "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Australia Sydney");
@@ -980,6 +1139,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Taipei");
             bookArea.setText("MANILA TO TAIPEI "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Taipei");
@@ -987,6 +1148,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Japan Tokyo-Haneda");
             bookArea.setText("MANILA TO JAPAN TOKYO-HANEDA "+"\n"+text);
             fromNameLabel.setText("Manila");
             toNameLabel.setText("Japan Tokyo-Haneda");
@@ -994,6 +1157,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Manila");
+            gd.setToName("Cebu");
             bookArea.setText("PUERTO PRINCESA TO CEBU "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Cebu");
@@ -1001,6 +1166,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Puerto Princesa");
+            gd.setToName("Clark");
             bookArea.setText("PUERTO PRINCESA TO CLARK "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Clark");
@@ -1008,6 +1175,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Puerto Princesa");
+            gd.setToName("Manila");
             bookArea.setText("PUERTO PRINCESA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Puerto Princesa");
             toNameLabel.setText("Manila");
@@ -1015,6 +1184,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Siargao");
+            gd.setToName("Cebu");
             bookArea.setText("SIARGAO TO CEBU "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Cebu");
@@ -1022,6 +1193,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Siargao");
+            gd.setToName("Clark");
             bookArea.setText("SIARGAO TO CLARK "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Clark");
@@ -1029,6 +1202,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Siargao");
+            gd.setToName("Davao");
             bookArea.setText("SIARGAO TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Davao");
@@ -1036,6 +1211,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Siargao");
+            gd.setToName("Manila");
             bookArea.setText("SIARGAO TO MANILA "+"\n"+text);
             fromNameLabel.setText("Siargao");
             toNameLabel.setText("Manila");
@@ -1043,6 +1220,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Zamboanga");
+            gd.setToName("Davao");
             bookArea.setText("ZAMBOANGA TO DAVAO "+"\n"+text);
             fromNameLabel.setText("Zamboanga");
             toNameLabel.setText("Davao");
@@ -1050,6 +1229,8 @@ public class FlightResult extends javax.swing.JFrame {
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
             jPanel4.setVisible(true);
+            gd.setFromName("Zamboanga");
+            gd.setToName("Manila");
             bookArea.setText("ZAMBOANGA TO MANILA "+"\n"+text);
             fromNameLabel.setText("Zamboanga");
             toNameLabel.setText("Manila");
@@ -1140,6 +1321,7 @@ public class FlightResult extends javax.swing.JFrame {
     private javax.swing.JLabel fromNameLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
