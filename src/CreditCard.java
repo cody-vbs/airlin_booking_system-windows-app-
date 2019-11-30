@@ -50,8 +50,7 @@ public class CreditCard extends javax.swing.JFrame {
     
     private void myBookFlight(){
         
-        String imgDir = "C:\\Users\\syd\\Documents\\NetBeansProjects\\Airline Booking System"
-                + "\\airlin_booking_system-windows-app-\\src\\Icons\\airplane.png";
+        String imgDir = "src\\Icons\\airplane.png";
         ImageIcon airplane1 = new ImageIcon(imgDir);
         
         
@@ -630,7 +629,7 @@ public class CreditCard extends javax.swing.JFrame {
 
 
                    document.close();
-        }else
+        }else{
            
             
             
@@ -670,13 +669,14 @@ public class CreditCard extends javax.swing.JFrame {
      
         
         document.close();
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
          public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" + " (Pay Via Credit Card) ");
+        this.setTitle("HM Airlines" + " (Pay Via Credit Card) ");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

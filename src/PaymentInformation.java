@@ -246,10 +246,10 @@ public class PaymentInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
      public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" + " (Payment Information)");
+        this.setTitle("HM Airlines" + " (Payment Information)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

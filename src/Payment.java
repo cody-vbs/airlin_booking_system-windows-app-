@@ -180,9 +180,11 @@ public class Payment extends javax.swing.JFrame {
         if(paymentBox.getSelectedItem()=="Credit Card"){
             new CreditCard().setVisible(true);
             mode = "Credit Card";
+            this.setVisible(false);
         }else if(paymentBox.getSelectedItem()=="Cash"){
             new Cash().setVisible(true);
             mode = "Cash";
+            this.setVisible(false);
         }
         
         Connection con = null;
@@ -206,10 +208,10 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
      public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" + " (Payment)");
+        this.setTitle("HM Airlines" + " (Payment)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

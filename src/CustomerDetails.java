@@ -44,10 +44,10 @@ public class CustomerDetails extends javax.swing.JFrame {
     
     
      public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" +" (Customer Details)");
+        this.setTitle("HM Airlines" +" (Customer Details)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }

@@ -58,69 +58,76 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="445" max="-2" attributes="0"/>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="445" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="adultsSpinner" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <Component id="childSpinner" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel10" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <Component id="infantsSpinner" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="departurePicker" min="-2" pref="296" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="flightBtn" min="-2" pref="216" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fromCombo" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="toCombo" min="-2" pref="322" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="departurePicker" min="-2" pref="296" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="adultsSpinner" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel9" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="childSpinner" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel10" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="infantsSpinner" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="flightBtn" min="-2" pref="216" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="fromCombo" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="toCombo" min="-2" pref="322" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel5" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,9 +139,9 @@
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel2" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -142,7 +149,7 @@
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel3" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -178,7 +185,8 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -210,14 +218,14 @@
               <StringArray count="16">
                 <StringItem index="0" value="Bacolod"/>
                 <StringItem index="1" value="Bohol"/>
-                <StringItem index="2" value="Boracay"/>
-                <StringItem index="3" value="Cagayan"/>
+                <StringItem index="2" value="Boracay-Caticlan"/>
+                <StringItem index="3" value="Cagayan de Oro"/>
                 <StringItem index="4" value="Cebu"/>
                 <StringItem index="5" value="Clark"/>
-                <StringItem index="6" value="Coron"/>
+                <StringItem index="6" value="Coron-Busuanga"/>
                 <StringItem index="7" value="Davao"/>
                 <StringItem index="8" value="Dumaguete"/>
-                <StringItem index="9" value="Gensan"/>
+                <StringItem index="9" value="General Santos"/>
                 <StringItem index="10" value="Iloilo"/>
                 <StringItem index="11" value="Kalibo"/>
                 <StringItem index="12" value="Manila"/>
@@ -243,28 +251,28 @@
                 <StringItem index="2" value="Bacolod"/>
                 <StringItem index="3" value="Cagayan de Oro"/>
                 <StringItem index="4" value="Davao"/>
-                <StringItem index="5" value="Gensan"/>
+                <StringItem index="5" value="General Santos"/>
                 <StringItem index="6" value="Iloilo"/>
-                <StringItem index="7" value="Korea"/>
+                <StringItem index="7" value="Seoul- Incheon"/>
                 <StringItem index="8" value="Singapore"/>
-                <StringItem index="9" value="Tokyo Japan"/>
+                <StringItem index="9" value="Japan Tokyo-Haneda"/>
                 <StringItem index="10" value="Bohol"/>
-                <StringItem index="11" value="Boracay"/>
+                <StringItem index="11" value="Boracay-Caticlan"/>
                 <StringItem index="12" value="Zamboanga"/>
                 <StringItem index="13" value="Clark"/>
                 <StringItem index="14" value="Puerto Princesa"/>
-                <StringItem index="15" value="Bangkok Thailand"/>
-                <StringItem index="16" value="Brunei"/>
-                <StringItem index="17" value="Cambodia"/>
-                <StringItem index="18" value="Bejing China"/>
+                <StringItem index="15" value="Bangkok"/>
+                <StringItem index="16" value="Brunei Bandar Seri Begawan"/>
+                <StringItem index="17" value="Cambodia Siem Reap"/>
+                <StringItem index="18" value="China Beijing"/>
                 <StringItem index="19" value="Dubai"/>
-                <StringItem index="20" value="Hanoi Vietnam"/>
-                <StringItem index="21" value="Qatar"/>
-                <StringItem index="22" value="Sydney Australia"/>
+                <StringItem index="20" value="Vietnam-Hanoi"/>
+                <StringItem index="21" value="Qatar Doha-Hamad"/>
+                <StringItem index="22" value="Australia Sydney"/>
                 <StringItem index="23" value="Taipei"/>
                 <StringItem index="24" value="Hongkong"/>
                 <StringItem index="25" value="Kuwait"/>
-                <StringItem index="26" value="Malaysia"/>
+                <StringItem index="26" value="Malaysia Kuala Lumpur"/>
               </StringArray>
             </Property>
           </Properties>
@@ -396,6 +404,13 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Icons/airplane_landing.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Img/hm_airline_banner_final.jpg"/>
             </Property>
           </Properties>
         </Component>

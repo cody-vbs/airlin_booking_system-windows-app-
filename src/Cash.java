@@ -52,8 +52,7 @@ public class Cash extends javax.swing.JFrame {
     
     private void myBookFlight(){
         
-        String imgDir = "C:\\Users\\syd\\Documents\\NetBeansProjects\\Airline Booking System"
-                + "\\airlin_booking_system-windows-app-\\src\\Icons\\airplane.png";
+        String imgDir = "src\\Icons\\airplane.png";
         ImageIcon airplane1 = new ImageIcon(imgDir);
         
         
@@ -680,10 +679,10 @@ public class Cash extends javax.swing.JFrame {
     
     
      public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" +" (Pay Via Cash)syd@");
+        this.setTitle("HM Airlines" +" (Pay Via Cash)syd@");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

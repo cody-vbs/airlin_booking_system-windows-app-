@@ -190,7 +190,7 @@ public class LoginForm extends javax.swing.JFrame {
             new MainPage().setVisible(true);
             this.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(this, "Login Failed!", "Failed", JOptionPane.ERROR_MESSAGE);     
+            JOptionPane.showMessageDialog(this, "Login Failed", "Failed", JOptionPane.ERROR_MESSAGE);     
          }
         }else{
             JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
@@ -250,10 +250,10 @@ public class LoginForm extends javax.swing.JFrame {
     }
     
     public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" + " (Sign In)");
+        this.setTitle("HM Airlines" + " (Sign In)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }

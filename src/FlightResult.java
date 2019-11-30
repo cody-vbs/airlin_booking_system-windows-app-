@@ -387,7 +387,7 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("bacolod_manila", flightTbl);
         }else if(sj.getFromFlight().getSelectedItem()=="Bohol" && sj.toFlight.getSelectedItem()=="Manila"){
             fq.loadTbl("bohol_manila", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Boracay" && sj.toFlight.getSelectedItem()=="Manila"){
+        }else if(sj.fromFlight.getSelectedItem()=="Boracay-Caticlan" && sj.toFlight.getSelectedItem()=="Manila"){
             fq.loadTbl("boracay_manila", flightTbl);
         }else if (sj.fromFlight.getSelectedItem()=="Cagayan de Oro" && sj.toFlight.getSelectedItem()=="Cebu"){
             fq.loadTbl("cagayan_cebu", flightTbl);
@@ -399,21 +399,21 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("cebu_cagayan", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Cebu" && sj.toFlight.getSelectedItem()=="Davao"){
             fq.loadTbl("cebu_davao", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Cebu" && sj.toFlight.getSelectedItem()=="Gensan"){
+        }else if(sj.fromFlight.getSelectedItem()=="Cebu" && sj.toFlight.getSelectedItem()=="General Santos"){
             fq.loadTbl("cebu_gensan", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Cebu" && sj.toFlight.getSelectedItem()=="Iloilo"){
             fq.loadTbl("cebu_iloilo", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem() == "Cebu" && sj.toFlight.getSelectedItem() == "Korea"){
+        }else if(sj.fromFlight.getSelectedItem() == "Cebu" && sj.toFlight.getSelectedItem() == "Seoul- Incheon"){
             fq.loadTbl("cebu_korea", flightTbl);
         }else if(sj.fromFlight.getSelectedItem() == "Cebu" && sj.toFlight.getSelectedItem() == "Manila"){
             fq.loadTbl("cebu_manila", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Cebu" && sj.toFlight.getSelectedItem() == "Singapore"){
             fq.loadTbl("cebu_singapore", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem() == "Cebu" && sj.toFlight.getSelectedItem() == "Tokyo Japan"){
+        }else if(sj.fromFlight.getSelectedItem() == "Cebu" && sj.toFlight.getSelectedItem() == "Japan Tokyo-Haneda"){
             fq.loadTbl("cebu_tokyo", flightTbl);
         }else if(sj.fromFlight.getSelectedItem() == "Clark" && sj.toFlight.getSelectedItem()=="Bohol"){
             fq.loadTbl("clark_bohol", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Clark" && sj.toFlight.getSelectedItem()=="Boracay"){
+        }else if(sj.fromFlight.getSelectedItem()=="Clark" && sj.toFlight.getSelectedItem()=="Boracay-Caticlan"){
             fq.loadTbl("clark_boracay", flightTbl);
         }else if(sj.fromFlight.getSelectedItem() =="Clark" && sj.toFlight.getSelectedItem() == "Cebu"){
             fq.loadTbl("clark_cebu", flightTbl);
@@ -421,9 +421,9 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("clark_davao", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Clark" && sj.toFlight.getSelectedItem()=="Singapore"){
             fq.loadTbl("clark_singapore", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem() == "Coron" && sj.toFlight.getSelectedItem() == "Cebu"){
+        }else if(sj.fromFlight.getSelectedItem() == "Coron-Busuanga" && sj.toFlight.getSelectedItem() == "Cebu"){
             fq.loadTbl("coron_cebu", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem() == "Coron" && sj.toFlight.getSelectedItem()=="Manila"){
+        }else if(sj.fromFlight.getSelectedItem() == "Coron- Busuanga" && sj.toFlight.getSelectedItem()=="Manila"){
             fq.loadTbl("coron_manila", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Davao" && sj.toFlight.getSelectedItem() == "Bacolod"){
             fq.loadTbl("davao_bacolod", flightTbl);
@@ -437,9 +437,9 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("davao_zamboanga", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Dumaguete" && sj.toFlight.getSelectedItem() =="Manila"){
             fq.loadTbl("dumaguete_manila", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Gensan" && sj.toFlight.getSelectedItem()=="Cebu"){
+        }else if(sj.fromFlight.getSelectedItem()=="General Santos" && sj.toFlight.getSelectedItem()=="Cebu"){
             fq.loadTbl("gensan_cebu", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Gensan" && sj.toFlight.getSelectedItem()=="Manila"){
+        }else if(sj.fromFlight.getSelectedItem()=="General Santos" && sj.toFlight.getSelectedItem()=="Manila"){
             fq.loadTbl("gensan_manila", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Iloilo" && sj.toFlight.getSelectedItem()=="Cagayan de Oro"){
             fq.loadTbl("iloilo_cagayan", flightTbl);
@@ -449,7 +449,7 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("iloilo_clark", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Iloilo" && sj.toFlight.getSelectedItem()=="Davao"){
             fq.loadTbl("iloilo_davao", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Iloilo" && sj.toFlight.getSelectedItem()=="Gensan"){
+        }else if(sj.fromFlight.getSelectedItem()=="Iloilo" && sj.toFlight.getSelectedItem()=="General Santos"){
             fq.loadTbl("iloilo_gensan", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Iloilo" && sj.toFlight.getSelectedItem()=="Manila"){
             fq.loadTbl("iloilo_manila", flightTbl);
@@ -461,41 +461,41 @@ public class FlightResult extends javax.swing.JFrame {
             fq.loadTbl("kalibo_manila", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Bacolod"){
             fq.loadTbl("manila_bacolod", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Bangkok Thailand"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Bangkok"){
             fq.loadTbl("manila_bangkok", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Bohol"){
             fq.loadTbl("manila_bohol", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Brunei"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Brunei Bandar Seri Begawan"){
            fq.loadTbl("manila_brunei", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem() == "Cambodia"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem() == "Cambodia Siem Reap"){
             fq.loadTbl("manila_cambodia", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Cebu"){
             fq.loadTbl("manila_cebu", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Bejing China"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="China Beijing"){
             fq.loadTbl("manila_china", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Davao"){
             fq.loadTbl("manila_davao", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Dubai"){
             fq.loadTbl("manila_dubai", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Hanoi Vietnam"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Vietnam-Hanoi"){
             fq.loadTbl("manila_hanoi", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Hongkong"){
             fq.loadTbl("manila_hongkong", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Kuwait"){
             fq.loadTbl("manila_kuwait", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Malaysia"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Malaysia Kuala Lumpur"){
             fq.loadTbl("manila_malaysia", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Puerto Princesa"){
             fq.loadTbl("manila_princesa", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Qatar"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Qatar Doha-Hamad"){
             fq.loadTbl("manila_qatar", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Singapore"){
             fq.loadTbl("manila_singapore", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()== "Sydney Australia"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()== "Australia Sydney"){
             fq.loadTbl("manila_sydney", flightTbl);
         }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Taipei"){
             fq.loadTbl("manila_taipei", flightTbl);
-        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="Tokyo Japan"){
+        }else if(sj.fromFlight.getSelectedItem()=="Manila" && sj.toFlight.getSelectedItem()=="apan Tokyo-Haneda"){
             fq.loadTbl("manila_tokyo", flightTbl);
         }else if(sj.fromFlight.getSelectedItem() == "Puerto Princesa" && sj.toFlight.getSelectedItem()=="Cebu"){
             fq.loadTbl("princesa_cebu", flightTbl);
@@ -521,10 +521,10 @@ public class FlightResult extends javax.swing.JFrame {
     }
     
       public void setJframeIcon(){
-        String iconDir = "src\\Icons\\logo.png";
+        String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System" +" (Flight Result)");
+        this.setTitle("HM Airlines" +" (Flight Result)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
        
@@ -573,8 +573,7 @@ public class FlightResult extends javax.swing.JFrame {
         new GetBookDetails().setStr2(str2);
         
         //setting icon in airplane 1
-        String imgDir = "C:\\Users\\syd\\Documents\\NetBeansProjects\\Airline Booking System"
-                + "\\airlin_booking_system-windows-app-\\src\\Icons\\airplane.png";
+        String imgDir = "src\\Icons\\airplane.png";
         ImageIcon airplane1 = new ImageIcon(imgDir);
         airplaneLabel1.setIcon(airplane1);
         
