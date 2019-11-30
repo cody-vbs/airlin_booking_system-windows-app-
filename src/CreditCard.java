@@ -1,5 +1,18 @@
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
+import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,10 +30,14 @@ public class CreditCard extends javax.swing.JFrame {
      * Creates new form CreditCard
      */
     GetBookDetails gd = new GetBookDetails();
+    Image plane;
+    
     public CreditCard() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#a3f7bf"));
         this.myBookFlight();
         pnrField.setText(new GetBookDetails().getMyPnr());
+        pnrField.setEditable(false);
     }
 
     /**
@@ -57,6 +74,26 @@ public class CreditCard extends javax.swing.JFrame {
             
             System.out.println(gd.getConnectFrom());
             System.out.println(gd.getConnectTo());
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+             fromLabel.setText(gd.getFrom());
+            toLabel.setText(gd.getTo());
+            connectFromLabel.setText(gd.getConnectFrom());
+            connectToLabel.setText(gd.getConnectTo());
+            fromNameLabel.setText(gd.getFromName());
+            toNameLabel.setText(gd.getToName());
+            connectFromNameLabel.setText(gd.getConnectFromName());
+            connectToNameLabel.setText(gd.getConnectToName());
+            airplaneLabel2.setIcon(airplane1);
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+            fromLabel.setText(gd.getFrom());
+            toLabel.setText(gd.getTo());
+            connectFromLabel.setText(gd.getConnectFrom());
+            connectToLabel.setText(gd.getConnectTo());
+            fromNameLabel.setText(gd.getFromName());
+            toNameLabel.setText(gd.getToName());
+            connectFromNameLabel.setText(gd.getConnectFromName());
+            connectToNameLabel.setText(gd.getConnectToName());
+            airplaneLabel2.setIcon(airplane1);
         }
         
         //set icon
@@ -108,10 +145,12 @@ public class CreditCard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         qrField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(41, 161, 156));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("PNR Number");
@@ -359,7 +398,7 @@ public class CreditCard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
                             .addComponent(jLabel10))
-                        .addGap(0, 11, Short.MAX_VALUE))))
+                        .addGap(0, 5, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,29 +454,47 @@ public class CreditCard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(163, 247, 191));
+        jButton1.setText("Pay Now");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 22, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
@@ -447,6 +504,52 @@ public class CreditCard extends javax.swing.JFrame {
         // TODO add your handling code here:
         new WebcamQRCodeScanner().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String fname = JOptionPane.showInputDialog("Enter reciept name");
+        fname+=".pdf";
+          Document document = new Document();
+            PdfWriter writer;
+        try {
+            writer = PdfWriter.getInstance(document, new FileOutputStream(fname));
+            writer.close();
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            document.open();
+            
+        try {
+            document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+        try {
+            document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            document.add(new Paragraph(bookArea.getText() +"\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            document.add(new Paragraph("Booking Total: " + totalLabel.getText()));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+     
+        
+        document.close();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +600,7 @@ public class CreditCard extends javax.swing.JFrame {
     private javax.swing.JComboBox dayBox;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromNameLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

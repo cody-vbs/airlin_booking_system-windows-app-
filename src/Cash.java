@@ -1,5 +1,18 @@
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
+import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,16 +24,22 @@ import javax.swing.ImageIcon;
  *
  * @author syd
  */
-public class CreditCard extends javax.swing.JFrame {
+public class Cash extends javax.swing.JFrame {
 
     /**
      * Creates new form CreditCard
      */
     GetBookDetails gd = new GetBookDetails();
-    public CreditCard() {
+    Image plane;
+    
+    public Cash() {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#a3f7bf"));
         this.myBookFlight();
         pnrField.setText(new GetBookDetails().getMyPnr());
+        pnrField.setEditable(false);
+        totalField.setText(new GetBookDetails().getPrice());
+        totalField.setEditable(false);
     }
 
     /**
@@ -57,6 +76,26 @@ public class CreditCard extends javax.swing.JFrame {
             
             System.out.println(gd.getConnectFrom());
             System.out.println(gd.getConnectTo());
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+             fromLabel.setText(gd.getFrom());
+            toLabel.setText(gd.getTo());
+            connectFromLabel.setText(gd.getConnectFrom());
+            connectToLabel.setText(gd.getConnectTo());
+            fromNameLabel.setText(gd.getFromName());
+            toNameLabel.setText(gd.getToName());
+            connectFromNameLabel.setText(gd.getConnectFromName());
+            connectToNameLabel.setText(gd.getConnectToName());
+            airplaneLabel2.setIcon(airplane1);
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+            fromLabel.setText(gd.getFrom());
+            toLabel.setText(gd.getTo());
+            connectFromLabel.setText(gd.getConnectFrom());
+            connectToLabel.setText(gd.getConnectTo());
+            fromNameLabel.setText(gd.getFromName());
+            toNameLabel.setText(gd.getToName());
+            connectFromNameLabel.setText(gd.getConnectFromName());
+            connectToNameLabel.setText(gd.getConnectToName());
+            airplaneLabel2.setIcon(airplane1);
         }
         
         //set icon
@@ -70,21 +109,6 @@ public class CreditCard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        pnrField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cardField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cardBox = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        nameOnCardField = new javax.swing.JTextField();
-        dayBox = new javax.swing.JComboBox();
-        monthBox = new javax.swing.JComboBox();
-        yearBox = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
-        cvvField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         totalLabel = new javax.swing.JLabel();
@@ -108,106 +132,16 @@ public class CreditCard extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         qrField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnrField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        totalField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        amountField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(41, 161, 156));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("PNR Number");
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Card Number");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Card Type");
-
-        cardBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Visa", "Master Card" }));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Name on Card");
-
-        dayBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
-
-        monthBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Month", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        yearBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Year", "2040", "2039", "2038", "2037", "2036", "2035", "2034", "2033", "2032", "2031", "2030", "2029", "2028", "2027", "2026", "2025", "2024", "2023", "2022", "2021", "2020" }));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Expiry Date");
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setText("CVV Number");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnrField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cardField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cardBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameOnCardField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(dayBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(monthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(yearBox, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnrField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardBox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameOnCardField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dayBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 51));
 
@@ -359,7 +293,7 @@ public class CreditCard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
                             .addComponent(jLabel10))
-                        .addGap(0, 11, Short.MAX_VALUE))))
+                        .addGap(0, 9, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,9 +307,9 @@ public class CreditCard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fromLabel)
-                    .addComponent(toLabel)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fromLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(toLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(airplaneLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -384,10 +318,10 @@ public class CreditCard extends javax.swing.JFrame {
                     .addComponent(fromNameLabel)
                     .addComponent(toNameLabel))
                 .addGap(61, 61, 61)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(connectFromLabel)
                     .addComponent(connectToLabel)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(airplaneLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,29 +349,100 @@ public class CreditCard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(163, 247, 191));
+        jButton1.setText("Pay Now");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(41, 161, 156));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("PNR Number");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Amount to be Paid");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setText("Enter your amount");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnrField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnrField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                    .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 22, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)))
+                .addContainerGap())
         );
 
         pack();
@@ -447,6 +452,227 @@ public class CreditCard extends javax.swing.JFrame {
         // TODO add your handling code here:
         new WebcamQRCodeScanner().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //format total val
+        String formatTotal ="";
+        String newTotal = "";
+        if(totalField.getText().contains("PHP")){
+            newTotal = totalField.getText().replace("PHP", "");
+        }else if(totalField.getText().contains("Php")){
+             formatTotal = totalField.getText().replaceAll("Php", "");
+             newTotal = formatTotal.replaceAll("\\s","");
+        }
+       
+        
+        //computer for change
+        Double total = Double.parseDouble(newTotal);
+        Double yourAmount = Double.parseDouble(amountField.getText());
+        
+        Double change = yourAmount-total;
+        
+        String strChange = Double.toString(change);
+        
+        System.out.println(strChange);
+        
+        String fname = JOptionPane.showInputDialog("Enter reciept name");
+        fname+=".pdf";
+          Document document = new Document();
+            PdfWriter writer;
+            
+        try {
+            writer = PdfWriter.getInstance(document, new FileOutputStream(fname));
+            writer.close();
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            document.open();
+            
+        if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
+           
+                try {
+                   document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+               } catch (DocumentException ex) {
+                   Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+               }
+
+                try {
+                document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") "));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    document.add(new Paragraph(bookArea.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Amount Paid: " + amountField.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Amount Changed: " + Double.toString(change)));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+                document.close();
+
+            
+            
+            
+            
+           
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+                try {
+                 document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+               } catch (DocumentException ex) {
+                   Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+               }
+
+                try {
+                document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") "));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    document.add(new Paragraph(bookArea.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Amount Paid: " + amountField.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Amount Changed: " + Double.toString(change)));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+                document.close();    
+
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+                try {
+                  document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+                  } catch (DocumentException ex) {
+                      Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+
+                   try {
+                   document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                               gd.getConnectTo() + ") "));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+
+                   try {
+                       document.add(new Paragraph(bookArea.getText() +"\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph("Amount Paid: " + amountField.getText() +"\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph("Amount Changed: " + Double.toString(change)));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+
+
+                   document.close();
+        }else
+       
+            
+            
+            
+            
+            
+            
+            
+            
+        try {
+            document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+        try {
+            document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            document.add(new Paragraph(bookArea.getText() +"\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            document.add(new Paragraph("Amount Paid: " + amountField.getText() +"\n"));
+        } catch (DocumentException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            document.add(new Paragraph("Amount Changed: " + Double.toString(change)));
+        } catch (DocumentException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        document.close();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,25 +712,20 @@ public class CreditCard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel airplaneLabel1;
     private javax.swing.JLabel airplaneLabel2;
+    private javax.swing.JTextField amountField;
     private javax.swing.JTextArea bookArea;
-    private javax.swing.JComboBox cardBox;
-    private javax.swing.JTextField cardField;
     private javax.swing.JLabel connectFromLabel;
     private javax.swing.JLabel connectFromNameLabel;
     private javax.swing.JLabel connectToLabel;
     private javax.swing.JLabel connectToNameLabel;
-    private javax.swing.JTextField cvvField;
-    private javax.swing.JComboBox dayBox;
     private javax.swing.JLabel fromLabel;
     private javax.swing.JLabel fromNameLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -514,13 +735,11 @@ public class CreditCard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JComboBox monthBox;
-    private javax.swing.JTextField nameOnCardField;
     private javax.swing.JTextField pnrField;
     private javax.swing.JTextField qrField;
     private javax.swing.JLabel toLabel;
     private javax.swing.JLabel toNameLabel;
+    private javax.swing.JTextField totalField;
     private javax.swing.JLabel totalLabel;
-    private javax.swing.JComboBox yearBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -159,6 +160,7 @@ public class Payment extends javax.swing.JFrame {
             Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
     }//GEN-LAST:event_pnrFieldFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -174,6 +176,7 @@ public class Payment extends javax.swing.JFrame {
             new CreditCard().setVisible(true);
             mode = "Credit Card";
         }else if(paymentBox.getSelectedItem()=="Cash"){
+            new Cash().setVisible(true);
             mode = "Cash";
         }
         
@@ -197,6 +200,30 @@ public class Payment extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+//    boolean searchUserID(){
+//        boolean userFound = false;
+//        
+//         Connection con = null;
+//        String id = userIdField.getText();
+//        try {
+//            con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
+//            String query = "select * from customer_details";
+//            Statement state = con.createStatement();
+//            ResultSet rs = state.executeQuery(query);
+//            
+//            while(rs.next()){
+//                if(rs.getString("user_id").equals(id)){
+//                   userFound = true;
+//                }else{
+//                    userFound = false;
+//                }
+//                
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return userFound;
+//    }
     /**
      * @param args the command line arguments
      */

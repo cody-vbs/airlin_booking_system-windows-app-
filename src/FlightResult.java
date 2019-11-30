@@ -751,6 +751,17 @@ public class FlightResult extends javax.swing.JFrame {
             connectFromNameLabel.setText("Manila");
             connectToLabel.setText("SIN");
             connectToNameLabel.setText("Singapore");
+             //set val
+            gd.setFrom("CEB");
+            gd.setTo("MNL");
+            gd.setConnectFrom("MNL");
+            gd.setConnectTo("SIN");
+            gd.setFromName("Cebu");
+            gd.setToName("Manila");
+            gd.setConnectFromName("Manila");
+            gd.setConnectToName("Singapore");
+            
+            
         }else if(str1.equals("HND") && str2.equals("CEB")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
@@ -767,6 +778,16 @@ public class FlightResult extends javax.swing.JFrame {
             connectFromNameLabel.setText("Manila");
             connectToLabel.setText("HND");
             connectToNameLabel.setText("Japan Tokyo-Haneda");
+             //set val
+            gd.setFrom("CEB");
+            gd.setTo("MNL");
+            gd.setConnectFrom("MNL");
+            gd.setConnectTo("HND");
+            gd.setFromName("Cebu");
+            gd.setToName("Manila");
+            gd.setConnectFromName("Manila");
+            gd.setConnectToName("Japan Tokyo-Haneda");
+            
         }else if(str1.equals("CRK") && str2.equals("TAG")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
@@ -788,6 +809,7 @@ public class FlightResult extends javax.swing.JFrame {
         }else if(str1.equals("CRK")&& str2.equals("CEB")){
             new ProgressBar().setVisible(true);
             jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
             gd.setFromName("Clark");
             gd.setToName("Cebu");
             bookArea.setText("CLARK TO CEBU "+"\n"+text);

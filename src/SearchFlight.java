@@ -283,7 +283,7 @@ public class SearchFlight extends javax.swing.JFrame {
         String adult = Integer.toString((int) adultsSpinner.getValue());
         String child = Integer.toString((int) childSpinner.getValue());
         String infant = Integer.toString((int)infantsSpinner.getValue());
-        
+        int infantCount = Integer.parseInt(infant);
         //set all values
         if(adult.equals("0")){
             gv.setAdultSpinner("1");
@@ -300,7 +300,7 @@ public class SearchFlight extends javax.swing.JFrame {
         gv.setChildSpinnerVal(child);
         gv.setInfantSpinner(infant);
         
-        int infantCount = Integer.parseInt(infant);
+       
       
 
         
