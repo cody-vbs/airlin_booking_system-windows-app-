@@ -228,7 +228,7 @@ public class UpdateDetails extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(279, 279, 279))
+                .addGap(289, 289, 289))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +253,7 @@ public class UpdateDetails extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.updateData();
-        JOptionPane.showMessageDialog(null, "Customer data is updated successfully", "Success", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Customer data is updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -344,7 +344,7 @@ public class UpdateDetails extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" + " (Update Customer Details)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

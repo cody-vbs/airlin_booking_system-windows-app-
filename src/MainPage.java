@@ -131,7 +131,7 @@ public class MainPage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new SearchFlight().setVisible(true);
-        this.setVisible(false);
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -157,7 +157,7 @@ public class MainPage extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" +" (Main Menu)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

@@ -186,14 +186,14 @@ public class LoginForm extends javax.swing.JFrame {
         boolean allFill = allFill();
         if(allFill){
         if(isLogin){
-            JOptionPane.showMessageDialog(this, "Login Successful!", "Login", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Login Successfu!", "Login", JOptionPane.INFORMATION_MESSAGE);
             new MainPage().setVisible(true);
             this.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(this, "Login Failed!", "Failed", JOptionPane.PLAIN_MESSAGE);     
+            JOptionPane.showMessageDialog(this, "Login Failed!", "Failed", JOptionPane.ERROR_MESSAGE);     
          }
         }else{
-            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
         }
        
     }//GEN-LAST:event_buttonSignInActionPerformed
@@ -253,7 +253,7 @@ public class LoginForm extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" + " (Sign In)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }

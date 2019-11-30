@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -210,7 +211,7 @@ public class PaymentInformation extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection con = null;
         String pnr = pnrField.getText();
-
+        if(!pnr.isEmpty()){
         try {
             con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
         } catch (SQLException ex) {
@@ -239,13 +240,16 @@ public class PaymentInformation extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please enter customer's PNR number","Warning",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
      public void setJframeIcon(){
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" + " (Payment Information)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

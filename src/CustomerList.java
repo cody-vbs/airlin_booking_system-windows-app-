@@ -43,7 +43,7 @@ public class CustomerList extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" +" (Customer List)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
        
@@ -68,7 +68,7 @@ public class CustomerList extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         customerTbl = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 

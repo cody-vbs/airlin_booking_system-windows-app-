@@ -683,7 +683,7 @@ public class Cash extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" +" (Pay Via Cash)syd@");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         

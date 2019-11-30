@@ -228,7 +228,7 @@ public class RegistrationForm extends javax.swing.JFrame {
                     emailError.setText("Please use a valid email address");
                 }else{
                         addData();
-                        JOptionPane.showMessageDialog(this, "Your account has been created successfully", "Great!", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Your account has been created successfully", "Great!", JOptionPane.INFORMATION_MESSAGE);
                         new LoginForm().setVisible(true);
                         this.setVisible(false);
                     }
@@ -239,11 +239,11 @@ public class RegistrationForm extends javax.swing.JFrame {
                 }
                 
             }else{
-                JOptionPane.showMessageDialog(this, "Password are not match", "Warning", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Password are not match", "Warning", JOptionPane.ERROR_MESSAGE);
                 System.out.println("Password are not match");
             }
         }else{
-            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.WARNING_MESSAGE);
             System.out.println("Please fill in all fields");
         }
         
@@ -293,7 +293,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" + " (Sign Up)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }

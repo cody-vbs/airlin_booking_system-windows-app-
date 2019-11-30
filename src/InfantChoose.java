@@ -32,7 +32,7 @@ public class InfantChoose extends javax.swing.JFrame {
         String iconDir = "src\\Icons\\logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
         this.setIconImage(icon);
-        this.setTitle("Airline Booking System");
+        this.setTitle("Airline Booking System" + " (Travelling with an Infant)");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
