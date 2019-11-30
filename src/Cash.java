@@ -6,6 +6,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class Cash extends javax.swing.JFrame {
         pnrField.setEditable(false);
         totalField.setText(new GetBookDetails().getPrice());
         totalField.setEditable(false);
+        this.setJframeIcon();
     }
 
     /**
@@ -478,6 +480,7 @@ public class Cash extends javax.swing.JFrame {
         
         String fname = JOptionPane.showInputDialog("Enter reciept name");
         fname+=".pdf";
+        new ProgressBarPayment().setVisible(true);
           Document document = new Document();
             PdfWriter writer;
             
@@ -674,6 +677,17 @@ public class Cash extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+     public void setJframeIcon(){
+        String iconDir = "src\\Icons\\logo.png";
+        java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
+        this.setIconImage(icon);
+        this.setTitle("Airline Booking System");
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+    }
     /**
      * @param args the command line arguments
      */

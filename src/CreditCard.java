@@ -6,6 +6,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class CreditCard extends javax.swing.JFrame {
         this.myBookFlight();
         pnrField.setText(new GetBookDetails().getMyPnr());
         pnrField.setEditable(false);
+        this.setJframeIcon();
     }
 
     /**
@@ -509,6 +511,7 @@ public class CreditCard extends javax.swing.JFrame {
         // TODO add your handling code here:
         String fname = JOptionPane.showInputDialog("Enter reciept name");
         fname+=".pdf";
+        new ProgressBarPayment().setVisible(true);
           Document document = new Document();
             PdfWriter writer;
         try {
@@ -520,6 +523,125 @@ public class CreditCard extends javax.swing.JFrame {
             Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
         }
             document.open();
+        if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
+           
+                try {
+                   document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+               } catch (DocumentException ex) {
+                   Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+               }
+
+                try {
+                document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") "));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    document.add(new Paragraph(bookArea.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+
+
+                document.close();
+
+            
+            
+            
+            
+           
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+                try {
+                 document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+               } catch (DocumentException ex) {
+                   Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+               }
+
+                try {
+                document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") "));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    document.add(new Paragraph(bookArea.getText() +"\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+
+
+                document.close();    
+
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+                try {
+                  document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
+                  } catch (DocumentException ex) {
+                      Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+
+                   try {
+                   document.add(new Paragraph(gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph(gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                               gd.getConnectTo() + ") "));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+
+                   try {
+                       document.add(new Paragraph(bookArea.getText() +"\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   try {
+                       document.add(new Paragraph("Booking Total: " + totalLabel.getText() +"\n\n\n\n"));
+                   } catch (DocumentException ex) {
+                       Logger.getLogger(CreditCard.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               
+
+
+                   document.close();
+        }else
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
         try {
             document.add(new Paragraph("FLIGHT SUMARRY" +"\n\n"));
@@ -550,7 +672,18 @@ public class CreditCard extends javax.swing.JFrame {
         document.close();
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+         public void setJframeIcon(){
+        String iconDir = "src\\Icons\\logo.png";
+        java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
+        this.setIconImage(icon);
+        this.setTitle("Airline Booking System");
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */

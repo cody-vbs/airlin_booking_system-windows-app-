@@ -1,4 +1,7 @@
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,6 +33,8 @@ public class Payment extends javax.swing.JFrame {
     final String PASSWORD = "";
     public Payment() {
         initComponents();
+        this.setJframeIcon();
+        this.getContentPane().setBackground(Color.decode("#222831"));
     }
 
     /**
@@ -200,6 +205,15 @@ public class Payment extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     public void setJframeIcon(){
+        String iconDir = "src\\Icons\\logo.png";
+        Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
+        this.setIconImage(icon);
+        this.setTitle("Airline Booking System");
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+    }
 //    boolean searchUserID(){
 //        boolean userFound = false;
 //        

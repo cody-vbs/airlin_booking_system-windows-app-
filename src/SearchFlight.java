@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.TableCellRenderer;
@@ -79,8 +80,10 @@ public class SearchFlight extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("From");
 
+        fromCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fromCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bacolod", "Bohol", "Boracay", "Cagayan", "Cebu", "Clark", "Coron", "Davao", "Dumaguete", "Gensan", "Iloilo", "Kalibo", "Manila", "Puerto Princesa", "Siargao", "Zamboanga" }));
 
+        toCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         toCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cebu", "Manila", "Bacolod", "Cagayan de Oro", "Davao", "Gensan", "Iloilo", "Korea", "Singapore", "Tokyo Japan", "Bohol", "Boracay", "Zamboanga", "Clark", "Puerto Princesa", "Bangkok Thailand", "Brunei", "Cambodia", "Bejing China", "Dubai", "Hanoi Vietnam", "Qatar", "Sydney Australia", "Taipei", "Hongkong", "Kuwait", "Malaysia" }));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -157,8 +160,7 @@ public class SearchFlight extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(childSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(149, 149, 149))
+                                    .addComponent(childSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(300, 300, 300)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,10 +271,14 @@ public class SearchFlight extends javax.swing.JFrame {
         
         
         //get dates
+        String fromDate = "";
         Date fDate = departurePicker.getDate();        
         DateFormat oDateFormat = new SimpleDateFormat("EEEE,yyyy-MM-dd");
-        String fromDate = oDateFormat.format(fDate).toString();
-        
+        if(departurePicker.getDate()!=null){
+         fromDate = oDateFormat.format(fDate).toString();
+        }else{
+            JOptionPane.showMessageDialog(null,"Kindly indicate the departure date", "Warning", JOptionPane.PLAIN_MESSAGE);
+        }
        
         
         //set Dates
@@ -303,21 +309,27 @@ public class SearchFlight extends javax.swing.JFrame {
        
       
 
-        
+      
         
         try {
             if(infantCount >=1){
                 new InfantChoose().setVisible(true);
 //                new FlightResult().setVisible(true);
             }else{
+                if(departurePicker.getDate() !=null){
                 new FlightResult().setVisible(true);
+                }else{
+                    
+                }
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(SearchFlight.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
+//       
+//        }else{
+//            JOptionPane.showMessageDialog(null,"Kindly indicate the departure date", "Warning", JOptionPane.PLAIN_MESSAGE);
+//        }
     }//GEN-LAST:event_flightBtnActionPerformed
 
     
@@ -327,6 +339,7 @@ public class SearchFlight extends javax.swing.JFrame {
         this.setIconImage(icon);
         this.setTitle("Airline Booking System");
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         
     }
       private void setSpinnerVal(){

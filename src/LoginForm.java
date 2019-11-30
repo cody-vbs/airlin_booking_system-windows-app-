@@ -69,17 +69,17 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(18, 73, 78));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Password");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Email");
 
         emailField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        passwordField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        passwordField.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
 
         buttonSignIn.setBackground(new java.awt.Color(233, 148, 6));
         buttonSignIn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -125,12 +125,10 @@ public class LoginForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(timerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(60, 60, 60)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
@@ -189,7 +187,7 @@ public class LoginForm extends javax.swing.JFrame {
         if(allFill){
         if(isLogin){
             JOptionPane.showMessageDialog(this, "Login Successful!", "Login", JOptionPane.PLAIN_MESSAGE);
-            new SearchFlight().setVisible(true);
+            new MainPage().setVisible(true);
             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(this, "Login Failed!", "Failed", JOptionPane.PLAIN_MESSAGE);     
@@ -199,7 +197,8 @@ public class LoginForm extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_buttonSignInActionPerformed
-
+   
+    
     private boolean loginSuccess(){
         Connection con;
         String query = "select * from admin_accounts";
