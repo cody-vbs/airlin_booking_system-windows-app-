@@ -210,6 +210,9 @@ public class PaymentInformation extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Connection con = null;
+        boolean found = pnrFound();
+        
+        if(found){
         String pnr = pnrField.getText();
         if(!pnr.isEmpty()){
         try {
@@ -243,8 +246,48 @@ public class PaymentInformation extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Please enter customer's PNR number","Warning",JOptionPane.WARNING_MESSAGE);
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "PNR number not found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    boolean pnrFound (){
+        boolean isFound =false;
+        Connection con = null;
+        String pnr = pnrField.getText();
+        if(!pnr.isEmpty()){
+        try {
+            con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String query = "select * from payment_info where pnr=" + pnr ;
+         try {
+            con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery(query);
+            String rowData [] = new String [8];
+            while(rs.next()){
+              if(pnr.equals(rs.getString("pnr"))){
+                  isFound = true;
+              }
+            
+           
+            }
+            
+            state.close();
+            rs.close();
+            con.close();
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        return isFound;
+        
+        
+    }
      public void setJframeIcon(){
         String iconDir = "src\\Icons\\hm_airline_logo.png";
         Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);

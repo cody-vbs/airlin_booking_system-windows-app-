@@ -35,6 +35,7 @@ public class FlightResult extends javax.swing.JFrame {
         jPanel3.setVisible(false);
         jPanel4.setVisible(false);
         jButton3.setEnabled(false);
+        
        
        
  

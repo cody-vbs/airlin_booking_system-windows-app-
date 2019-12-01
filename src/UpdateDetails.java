@@ -247,7 +247,14 @@ public class UpdateDetails extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.fetchData();
+        boolean found = userIdFound();
+        
+        if(found){
+             this.fetchData();
+        }else{
+            JOptionPane.showMessageDialog(null, "User ID not found","Error",JOptionPane.ERROR_MESSAGE);
+        }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -348,6 +355,40 @@ public class UpdateDetails extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
+    }
+    boolean userIdFound(){
+        boolean isFound = false;
+        
+        
+        Connection con = null;
+        String user_id = userIdField.getText();
+
+        try {
+            con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String query = "select * from customer_details"  ;
+         try {
+            con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            Statement state = con.createStatement();
+            ResultSet rs = state.executeQuery(query);
+            while(rs.next()){
+                if(rs.getString("user_id").equals(user_id)){
+                    isFound=true;
+            }
+           
+            }
+            
+            state.close();
+            rs.close();
+            con.close();
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return isFound;
     }
     
     public static void main(String args[]) {

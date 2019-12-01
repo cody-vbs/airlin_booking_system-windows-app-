@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -72,6 +73,11 @@ public class MainPage extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logout_3.png"))); // NOI18N
         jButton3.setText("Logout");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(41, 161, 156));
         jButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -162,6 +168,22 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         new UpdateDetails().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+         Object [] options = {"Yes", "No"};
+           int choice = JOptionPane.showOptionDialog(null,"Are you sure you want to sign out?", "Warning", 
+                   JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null,options, options[0]);
+           
+           if(choice==0){
+               JOptionPane.showMessageDialog(null, "Thank you for choosing HM Airlines", "Exiting",JOptionPane.INFORMATION_MESSAGE);
+               new LoginForm().setVisible(true);
+               this.setVisible(false);
+           }else{
+               
+           }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
       public void setJframeIcon(){
         String iconDir = "src\\Icons\\hm_airline_logo.png";
