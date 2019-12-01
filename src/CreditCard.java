@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +34,7 @@ public class CreditCard extends javax.swing.JFrame {
      */
     GetBookDetails gd = new GetBookDetails();
     Image plane;
+    JTextArea area = new JTextArea();
     
     public CreditCard() {
         initComponents();
@@ -40,6 +43,8 @@ public class CreditCard extends javax.swing.JFrame {
         pnrField.setText(new GetBookDetails().getMyPnr());
         pnrField.setEditable(false);
         this.setJframeIcon();
+        //disable print button
+        jButton3.setEnabled(false);
     }
 
     /**
@@ -148,6 +153,7 @@ public class CreditCard extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -467,6 +473,14 @@ public class CreditCard extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/credit_card_banner.jpg"))); // NOI18N
         jLabel11.setText("jLabel11");
 
+        jButton3.setBackground(new java.awt.Color(41, 161, 156));
+        jButton3.setText("Print");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -474,16 +488,16 @@ public class CreditCard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(167, 167, 167)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -503,8 +517,11 @@ public class CreditCard extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)))
                 .addContainerGap())
         );
 
@@ -518,6 +535,8 @@ public class CreditCard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //enable print button
+        jButton3.setEnabled(true);
         String fname = JOptionPane.showInputDialog("Enter reciept name");
         fname+=".pdf";
         new ProgressBarPayment().setVisible(true);
@@ -682,6 +701,98 @@ public class CreditCard extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+           
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 );
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+           
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+             String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+          
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+        String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+        area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 );
+        
+        boolean printData = false;
+        try {
+            printData = area.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(printData){
+            JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+        }
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
          public void setJframeIcon(){
         String iconDir = "src\\Icons\\hm_airline_logo.png";
         java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(iconDir);
@@ -745,6 +856,7 @@ public class CreditCard extends javax.swing.JFrame {
     private javax.swing.JLabel fromNameLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

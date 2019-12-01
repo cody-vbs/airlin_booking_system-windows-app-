@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +34,9 @@ public class Cash extends javax.swing.JFrame {
      */
     GetBookDetails gd = new GetBookDetails();
     Image plane;
+    JTextArea area = new JTextArea(5,20);
+   
+        
     
     public Cash() {
         initComponents();
@@ -63,6 +68,10 @@ public class Cash extends javax.swing.JFrame {
         fromNameLabel.setText(gd.getFromName());
         toNameLabel.setText(gd.getToName());
         
+        //disable print button
+        jButton3.setEnabled(false);
+        
+       
         
         if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
             fromLabel.setText(gd.getFrom());
@@ -142,6 +151,7 @@ public class Cash extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         amountField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -413,6 +423,14 @@ public class Cash extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cash_banner_2.jpg"))); // NOI18N
 
+        jButton3.setBackground(new java.awt.Color(41, 161, 156));
+        jButton3.setText("Print");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -422,8 +440,10 @@ public class Cash extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(168, 168, 168)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(86, 86, 86)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -450,7 +470,9 @@ public class Cash extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -464,6 +486,10 @@ public class Cash extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //enable print button
+        jButton3.setEnabled(true);
+        
+        
         //format total val
         String formatTotal ="";
         String newTotal = "";
@@ -479,7 +505,7 @@ public class Cash extends javax.swing.JFrame {
         Double total = Double.parseDouble(newTotal);
         Double yourAmount = Double.parseDouble(amountField.getText());
         
-        Double change = yourAmount-total;
+        Double  change = yourAmount-total;
         
         String strChange = Double.toString(change);
         
@@ -635,7 +661,7 @@ public class Cash extends javax.swing.JFrame {
 
 
                    document.close();
-        }else
+        }else{
        
             
             
@@ -681,8 +707,131 @@ public class Cash extends javax.swing.JFrame {
         
         
         document.close();
-        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String formatTotal ="";
+        String newTotal = "";
+       
+        if(totalField.getText().contains("PHP")){
+            newTotal = totalField.getText().replace("PHP", "");
+        }else if(totalField.getText().contains("Php")){
+             formatTotal = totalField.getText().replaceAll("Php", "");
+             newTotal = formatTotal.replaceAll("\\s","");
+        }
+          //computer for change
+        Double total = Double.parseDouble(newTotal);
+        Double yourAmount = Double.parseDouble(amountField.getText());
+        
+        Double  change = yourAmount-total;
+        
+        
+        
+        
+        
+        
+        if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
+            String change2 = "Amount Changed: " + Double.toString(change);
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+        }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
+            String change2 = "Amount Changed: " + Double.toString(change);
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+        }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
+             String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
+            String change2 = "Amount Changed: " + Double.toString(change);
+            
+            area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
+            
+            boolean printData2 = false;
+            try {
+                printData2 = area.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(printData2){
+                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+        String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+        String amount1 = "Amount Paid: " + amountField.getText() +"\n";
+        String change1 = "Amount Changed: " + Double.toString(change);
+        area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 + amount1 + change1);
+        
+        
+       
+        
+       
+        
+        String strChange = Double.toString(change);
+        
+        boolean printData = false;
+        try {
+            printData = area.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(printData){
+            JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+        }
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     
@@ -743,6 +892,7 @@ public class Cash extends javax.swing.JFrame {
     private javax.swing.JLabel fromNameLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
