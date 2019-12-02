@@ -254,7 +254,7 @@ public class LoginForm extends javax.swing.JFrame {
             this.setVisible(false);
         }else{
              Object [] options = {"Try again", "Cancel"};
-           int choice = JOptionPane.showOptionDialog(null,"Incorrect username/password", "Login Failed!", 
+           int choice = JOptionPane.showOptionDialog(null,"Incorrect email or password", "Login Failed!", 
                    JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null,options, options[0]);
            if(choice ==0){
                emailField.setText("");

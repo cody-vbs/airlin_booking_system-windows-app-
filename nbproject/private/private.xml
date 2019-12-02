@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/Airline%20Booking%20System/src/RegistrationForm.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/Airline%20Booking%20System/src/TestFrame.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/Airline%20Booking%20System/src/SearchFlight.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/Airline%20Booking%20System/src/LoginForm.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/FlightResult.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/Cash.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/CustomerDetails.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/CreditCard.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SearchFlight.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SearchFlightJava.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SplashScreen.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/LoginForm.java</file>
         </group>
     </open-files>
 </project-private>
