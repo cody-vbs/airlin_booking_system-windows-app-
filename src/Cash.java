@@ -6,6 +6,8 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Toolkit;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
@@ -362,6 +364,8 @@ public class Cash extends javax.swing.JFrame {
         );
 
         jButton1.setBackground(new java.awt.Color(41, 161, 156));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Pay Now");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,6 +428,8 @@ public class Cash extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cash_banner_2.jpg"))); // NOI18N
 
         jButton3.setBackground(new java.awt.Color(41, 161, 156));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Print");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -510,6 +516,8 @@ public class Cash extends javax.swing.JFrame {
         String strChange = Double.toString(change);
         
         System.out.println(strChange);
+        
+        if(yourAmount >= total){
         
         String fname = JOptionPane.showInputDialog("Enter reciept name");
         fname+=".pdf";
@@ -708,6 +716,9 @@ public class Cash extends javax.swing.JFrame {
         
         document.close();
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Insufficient amount", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -728,6 +739,18 @@ public class Cash extends javax.swing.JFrame {
         Double  change = yourAmount-total;
         
         
+        //font
+        Font fn = null;
+        try {
+            fn =Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Merchant.ttf"));
+            fn =fn.deriveFont(Font.PLAIN,14);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
         
         
@@ -741,7 +764,8 @@ public class Cash extends javax.swing.JFrame {
             String change2 = "Amount Changed: " + Double.toString(change);
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
-            
+       
+            area.setFont(fn);
             boolean printData2 = false;
             try {
                 printData2 = area.print();
@@ -807,7 +831,7 @@ public class Cash extends javax.swing.JFrame {
         String change1 = "Amount Changed: " + Double.toString(change);
         area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 + amount1 + change1);
         
-        
+        area.setFont(fn);
        
         
        

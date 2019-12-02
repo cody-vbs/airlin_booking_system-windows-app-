@@ -6,6 +6,8 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Image;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Toolkit;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
@@ -463,6 +465,8 @@ public class CreditCard extends javax.swing.JFrame {
         );
 
         jButton1.setBackground(new java.awt.Color(41, 161, 156));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Pay Now");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -474,6 +478,8 @@ public class CreditCard extends javax.swing.JFrame {
         jLabel11.setText("jLabel11");
 
         jButton3.setBackground(new java.awt.Color(41, 161, 156));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Print");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,6 +710,20 @@ public class CreditCard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+          
+        //font
+        Font fn = null;
+        try {
+            fn =Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Merchant.ttf"));
+            fn =fn.deriveFont(Font.PLAIN,14);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
         if(gd.getStr1().equals("CEB") && gd.getStr2().equals("ICN")){
             String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
@@ -712,7 +732,7 @@ public class CreditCard extends javax.swing.JFrame {
            
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 );
-            
+            area.setFont(fn);
             boolean printData2 = false;
             try {
                 printData2 = area.print();
@@ -735,7 +755,7 @@ public class CreditCard extends javax.swing.JFrame {
            
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
-            
+            area.setFont(fn);
             boolean printData2 = false;
             try {
                 printData2 = area.print();
@@ -756,7 +776,7 @@ public class CreditCard extends javax.swing.JFrame {
           
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
-            
+            area.setFont(fn);
             boolean printData2 = false;
             try {
                 printData2 = area.print();
@@ -773,7 +793,7 @@ public class CreditCard extends javax.swing.JFrame {
             String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
         String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
         area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 );
-        
+        area.setFont(fn);
         boolean printData = false;
         try {
             printData = area.print();

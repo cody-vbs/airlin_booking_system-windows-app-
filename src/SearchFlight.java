@@ -315,9 +315,9 @@ public class SearchFlight extends javax.swing.JFrame {
         gv.setInfantSpinner(infant);
         
        
-      
+      boolean isRight = isCorrect();
 
-      
+      if(isRight){
         
         try {
             if(infantCount >=1){
@@ -334,12 +334,38 @@ public class SearchFlight extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchFlight.class.getName()).log(Level.SEVERE, null, ex);
         }
+      }else{
+          JOptionPane.showMessageDialog(null, "Sorry! You can't do that", "Error",JOptionPane.ERROR_MESSAGE);
+      }
 //       
 //        }else{
 //            JOptionPane.showMessageDialog(null,"Kindly indicate the departure date", "Warning", JOptionPane.PLAIN_MESSAGE);
 //        }
     }//GEN-LAST:event_flightBtnActionPerformed
-
+    boolean isCorrect(){
+        boolean correct = false;
+        
+        if( !(fromCombo.getSelectedItem() == "Bacolod" && toCombo.getSelectedItem() == "Bacolod") && 
+               !(fromCombo.getSelectedItem() == "Bohol" && toCombo.getSelectedItem() == "Boho") &&
+                !(fromCombo.getSelectedItem() == "Boracay-Caticlan" && toCombo.getSelectedItem() == "Boracay-Caticlan")&&
+                !(fromCombo.getSelectedItem()=="Cagayan de Oro" && toCombo.getSelectedItem() == "Cagayan de Oro")&&
+                !(fromCombo.getSelectedItem()=="Cebu" && toCombo.getSelectedItem()=="Cebu") && 
+                !(fromCombo.getSelectedItem() == "Clark" && toCombo.getSelectedItem() == "Clark") && 
+                !(fromCombo.getSelectedItem()=="Coron-Busuanga" && toCombo.getSelectedItem() == "Coron-Busuanga")&&
+                !(fromCombo.getSelectedItem() == "Davao" && toCombo.getSelectedItem() == "Davao") && 
+                !(fromCombo.getSelectedItem()=="Dumaguete" && toCombo.getSelectedItem() == "Dumaguete") && 
+                !(fromCombo.getSelectedItem()=="General Santos" && toCombo.getSelectedItem()=="General Santos")&&
+                !(fromCombo.getSelectedItem() == "Iloilo" && toCombo.getSelectedItem()=="Iloilo") && 
+                !(fromCombo.getSelectedItem()=="Kalibo" && toCombo.getSelectedItem()=="Kalibo") && 
+                !(fromCombo.getSelectedItem()=="Manila"&& toCombo.getSelectedItem() == "Manila")&&
+                !(fromCombo.getSelectedItem()=="Puerto Princesa" && toCombo.getSelectedItem()=="Puerto Princesa")&&
+                !(fromCombo.getSelectedItem()=="Siargao" && toCombo.getSelectedItem() == "Siargao") && 
+                !(fromCombo.getSelectedItem()=="Zamboanga" && toCombo.getSelectedItem() == "Zamboanga")){
+            
+            correct = true;
+        }
+        return correct;
+    }
     
      public void setJframeIcon(){
         String iconDir = "src\\Icons\\hm_airline_logo.png";
