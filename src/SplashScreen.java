@@ -19,11 +19,11 @@ public class SplashScreen extends javax.swing.JFrame {
      * Creates new form SplashScreen
      */
     public SplashScreen() {
-        this.setDefaultLookAndFeelDecorated(rootPaneCheckingEnabled);
+        this.setDefaultLookAndFeelDecorated(false);
         initComponents();
         this.setJframeIcon();
         this.setResizable(false);
-        this.getContentPane().setBackground(Color.decode("#29a19c"));
+        this.getContentPane().setBackground(Color.decode("#2D3E50"));
     }
 
     /**
@@ -46,9 +46,9 @@ public class SplashScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(41, 161, 156));
+        jPanel1.setBackground(new java.awt.Color(45, 62, 80));
 
-        jPanel2.setBackground(new java.awt.Color(41, 161, 156));
+        jPanel2.setBackground(new java.awt.Color(233, 148, 6));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -160,7 +160,7 @@ public class SplashScreen extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

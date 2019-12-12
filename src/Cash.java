@@ -485,7 +485,7 @@ public class Cash extends javax.swing.JFrame {
         
         if(yourAmount >= total){
         
-        String fname = JOptionPane.showInputDialog("Enter reciept name");
+        String fname = JOptionPane.showInputDialog("Enter receipt name");
         fname+=".pdf";
         new ProgressBarPayment().setVisible(true);
           Document document = new Document();
