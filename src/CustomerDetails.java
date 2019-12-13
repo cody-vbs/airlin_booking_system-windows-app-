@@ -290,6 +290,7 @@ public class CustomerDetails extends javax.swing.JFrame {
        
         
         
+        
         //get all values from jframe
         String gender = "";
         String user_id = userIdField.getText();
@@ -300,6 +301,10 @@ public class CustomerDetails extends javax.swing.JFrame {
         String address = addressArea.getText();
         String pnr = pnrField.getText();
         
+        String userName = fname + " " + mname + " " + lname;
+        
+        //set the name
+        new GetterPrice().setGuestName(userName);
         
          //set values
         gp.setUserId(user_id);

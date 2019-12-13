@@ -4,12 +4,19 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Image;
+//import com.itextpdf.text.Image;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import static java.awt.print.Printable.NO_SUCH_PAGE;
+import static java.awt.print.Printable.PAGE_EXISTS;
 import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,6 +47,9 @@ public class CreditCard extends javax.swing.JFrame {
     GetBookDetails gd = new GetBookDetails();
     Image plane;
     JTextArea area = new JTextArea();
+    Image img;
+    Image img2;
+    Font fn = null;
     
     public CreditCard() {
         initComponents();
@@ -537,8 +547,8 @@ public class CreditCard extends javax.swing.JFrame {
         // TODO add your handling code here:
         //enable print button
         jButton3.setEnabled(true);
-        String fname = JOptionPane.showInputDialog("Enter reciept name");
-        fname+=".pdf";
+        String fname = "Receipt.pdf";
+        
         new ProgressBarPayment().setVisible(true);
           Document document = new Document();
             PdfWriter writer;
@@ -706,7 +716,7 @@ public class CreditCard extends javax.swing.JFrame {
         // TODO add your handling code here:
           
         //font
-        Font fn = null;
+       
         try {
             fn =Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Merchant.ttf"));
             fn =fn.deriveFont(Font.PLAIN,14);
@@ -728,19 +738,59 @@ public class CreditCard extends javax.swing.JFrame {
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 );
             area.setFont(fn);
             boolean printData2 = false;
-            try {
-                printData2 = area.print();
-            } catch (PrinterException ex) {
-                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+//            try {
+//                printData2 = area.print();
+//            } catch (PrinterException ex) {
+//                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//            if(printData2){
+//                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+//            }
+        Toolkit tool = Toolkit.getDefaultToolkit();
+        img = tool.getImage("src\\Icons\\hm_banner_print.png");
+        img2 = tool.getImage("src\\Icons\\reminder.png");
+       
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        printJob.setPrintable(new Printable()
+        {
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex != 0) {
+                    return NO_SUCH_PAGE;
+                }
+                graphics.drawImage(img, 0,0,256,64, null);
+                paintComponent(graphics);
+                graphics.drawImage(img2, 0,256,256,64, null);
+                return PAGE_EXISTS;
             }
+              private void drawString(Graphics g, String text, int x, int y) {
+                for (String line : text.split("\n"))
+                  g.drawString(line, x, y += g.getFontMetrics().getHeight());
+              }
 
-            if(printData2){
-                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+              public void paintComponent(Graphics g) {
+                g.setFont(fn);
+                drawString(g,"\n\n\n\nFlIGHT SUMMARY\n\n" +"Name of the Customer: " +"\n" + new GetterPrice().getGuestName() + "\n\n"+ str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2+"\n\n", 20, 20);
+               
+                
+              }
+            
+        });
+        if (printJob.printDialog()) {
+            try {
+                printJob.print();
+                new ProgressBarReceipt().setVisible(true);
+            } catch (Exception prt) {
+                
             }
-            
-            
+        } 
+    
         }else if(gd.getStr1().equals("CEB") && gd.getStr2().equals("SIN")){
             String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
@@ -750,18 +800,54 @@ public class CreditCard extends javax.swing.JFrame {
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
             area.setFont(fn);
-            boolean printData2 = false;
-            try {
-                printData2 = area.print();
-            } catch (PrinterException ex) {
-                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            
+        Toolkit tool = Toolkit.getDefaultToolkit();
+        img = tool.getImage("src\\Icons\\hm_banner_print.png");
+        img2 = tool.getImage("src\\Icons\\reminder.png");
+       
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        printJob.setPrintable(new Printable()
+        {
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex != 0) {
+                    return NO_SUCH_PAGE;
+                }
+                graphics.drawImage(img, 0,0,256,64, null);
+                paintComponent(graphics);
+                graphics.drawImage(img2, 0,256,256,64, null);
+                return PAGE_EXISTS;
             }
+              private void drawString(Graphics g, String text, int x, int y) {
+                for (String line : text.split("\n"))
+                  g.drawString(line, x, y += g.getFontMetrics().getHeight());
+              }
 
-            if(printData2){
-                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+              public void paintComponent(Graphics g) {
+                g.setFont(fn);
+                drawString(g,"\n\n\n\nFlIGHT SUMMARY\n\n" +"Name of the Customer: " +"\n" + new GetterPrice().getGuestName() + "\n\n"+ str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2+"\n\n", 20, 20);
+               
+                
+              }
+            
+        });
+        if (printJob.printDialog()) {
+            try {
+                printJob.print();
+                new ProgressBarReceipt().setVisible(true);
+            } catch (Exception prt) {
+                
             }
+        } 
+            
+            
+            
+            
+            
+           
         }else if(gd.getStr1().equals("HND") && gd.getStr2().equals("CEB")){
              String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
@@ -771,35 +857,100 @@ public class CreditCard extends javax.swing.JFrame {
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 );
             area.setFont(fn);
-            boolean printData2 = false;
-            try {
-                printData2 = area.print();
-            } catch (PrinterException ex) {
-                Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
+            
+        Toolkit tool = Toolkit.getDefaultToolkit();
+        img = tool.getImage("src\\Icons\\hm_banner_print.png");
+        img2 = tool.getImage("src\\Icons\\reminder.png");
+       
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        printJob.setPrintable(new Printable()
+        {
+            String str2 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+            String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
+                            gd.getConnectTo() + ") ";
+            String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex != 0) {
+                    return NO_SUCH_PAGE;
+                }
+                graphics.drawImage(img, 0,0,256,64, null);
+                paintComponent(graphics);
+                graphics.drawImage(img2, 0,256,256,64, null);
+                return PAGE_EXISTS;
             }
+              private void drawString(Graphics g, String text, int x, int y) {
+                for (String line : text.split("\n"))
+                  g.drawString(line, x, y += g.getFontMetrics().getHeight());
+              }
 
-            if(printData2){
-                JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
+              public void paintComponent(Graphics g) {
+                g.setFont(fn);
+                drawString(g,"\n\n\n\nFlIGHT SUMMARY\n\n" +"Name of the Customer: " +"\n" + new GetterPrice().getGuestName() + "\n\n"+ str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2+"\n\n", 20, 20);
+               
+                
+              }
+            
+        });
+        if (printJob.printDialog()) {
+            try {
+                printJob.print();
+                new ProgressBarReceipt().setVisible(true);
+            } catch (Exception prt) {
+                
             }
+        } 
+            
+           
         }else{
-            String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+        String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
         String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
         area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 );
         area.setFont(fn);
         boolean printData = false;
-        try {
-            printData = area.print();
-        } catch (PrinterException ex) {
-            Logger.getLogger(Cash.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        if(printData){
-            JOptionPane.showMessageDialog(null, "Printing done", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(null, "Printing in progress", "Please wait", JOptionPane.WARNING_MESSAGE);
-        }
+        Toolkit tool = Toolkit.getDefaultToolkit();
+        img = tool.getImage("src\\Icons\\hm_banner_print.png");
+        img2 = tool.getImage("src\\Icons\\reminder.png");
+       
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        printJob.setPrintable(new Printable()
+        {
+           String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
+           String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex != 0) {
+                    return NO_SUCH_PAGE;
+                }
+                graphics.drawImage(img, 0,0,256,64, null);
+                paintComponent(graphics);
+                graphics.drawImage(img2, 0,256,256,64, null);
+                return PAGE_EXISTS;
+            }
+              private void drawString(Graphics g, String text, int x, int y) {
+                for (String line : text.split("\n"))
+                  g.drawString(line, x, y += g.getFontMetrics().getHeight());
+              }
+
+              public void paintComponent(Graphics g) {
+                g.setFont(fn);
+                drawString(g,"\n\n\n\nFlIGHT SUMMARY\n\n" +"Name of the Customer: " +"\n" + new GetterPrice().getGuestName() + "\n\n"+str1 +bookArea.getText() + "\n"+bookTotal1 +"\n\n", 20, 20);
+               
+                
+              }
+            
+        });
+        if (printJob.printDialog()) {
+            try {
+                printJob.print();
+                new ProgressBarReceipt().setVisible(true);
+            } catch (Exception prt) {
+                
+            }
+        } 
+        
+        
+        
+        
         }
         
         

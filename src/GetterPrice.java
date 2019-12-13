@@ -10,6 +10,15 @@
  */
 public class GetterPrice {
     static String airportName;
+    static String guestName;
+
+    public static String getGuestName() {
+        return guestName;
+    }
+
+    public static void setGuestName(String guestName) {
+        GetterPrice.guestName = guestName;
+    }
 
     public static String getAirportName() {
         return airportName;
