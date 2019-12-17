@@ -20,6 +20,7 @@ import java.awt.print.PrinterJob;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -48,6 +49,7 @@ public class Cash extends javax.swing.JFrame {
     Image img;
     Image img2;
     Double  change;
+    Double newChange;
         
     
     public Cash() {
@@ -475,17 +477,23 @@ public class Cash extends javax.swing.JFrame {
         //format total val
         String formatTotal ="";
         String newTotal = "";
+        String newTotal2 = "";
         if(totalField.getText().contains("PHP")){
             newTotal = totalField.getText().replace("PHP", "");
         }else if(totalField.getText().contains("Php")){
              formatTotal = totalField.getText().replaceAll("Php", "");
              newTotal = formatTotal.replaceAll("\\s","");
+             newTotal2 = newTotal.replaceAll(",", "");
         }
-       
-        
+        String amount = "";
+        if(amountField.getText().contains(",")){
+            amount = amountField.getText().replace(",", "");
+        }else{
+            amount = amountField.getText();
+        }
         //computer for change
-        Double total = Double.parseDouble(newTotal);
-        Double yourAmount = Double.parseDouble(amountField.getText());
+        Double total = Double.parseDouble(newTotal2);
+        Double yourAmount = Double.parseDouble(amount);
         
         Double  change = yourAmount-total;
         
@@ -701,18 +709,32 @@ public class Cash extends javax.swing.JFrame {
         // TODO add your handling code here:
         String formatTotal ="";
         String newTotal = "";
+        String newTotal2 = "";
        
         if(totalField.getText().contains("PHP")){
             newTotal = totalField.getText().replace("PHP", "");
         }else if(totalField.getText().contains("Php")){
              formatTotal = totalField.getText().replaceAll("Php", "");
              newTotal = formatTotal.replaceAll("\\s","");
+             newTotal2 = newTotal.replaceAll(",", "");
         }
+        
+         String amount = "";
+        if(amountField.getText().contains(",")){
+            amount = amountField.getText().replace(",", "");
+        }else{
+            amount = amountField.getText();
+        }
+        
+        
           //computer for change
-        Double total = Double.parseDouble(newTotal);
-        Double yourAmount = Double.parseDouble(amountField.getText());
+        Double total = Double.parseDouble(newTotal2);
+        Double yourAmount = Double.parseDouble(amount);
         
         change = yourAmount-total;
+        DecimalFormat df = new DecimalFormat("0.00");
+        newChange = Double.parseDouble(df.format(change));
+        
         
         
         //font
@@ -736,8 +758,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " +"Php "+ amountField.getText() +"\n";
+            String change2 = "Amount Changed: " + "Php " + Double.toString(newChange);
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 + "\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
        
@@ -754,8 +776,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " +"Php "+ amountField.getText() +"\n";
+            String change2 = "Amount Changed: " +"Php "+ Double.toString(newChange);
            
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
                 if (pageIndex != 0) {
@@ -795,8 +817,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " + "Php " +  amountField.getText() +"\n";
+            String change2 = "Amount Changed: " +"Php "+ Double.toString(newChange);
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
             area.setFont(fn);
@@ -812,8 +834,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " +"Php " +amountField.getText() +"\n";
+            String change2 = "Amount Changed: " +"Php " +Double.toString(newChange);
            
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
                 if (pageIndex != 0) {
@@ -858,8 +880,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " +"Php "+ amountField.getText() +"\n";
+            String change2 = "Amount Changed: " +"Php "+ Double.toString(newChange);
             
             area.setText("FlIGHT SUMMARY\n\n\n" + str2 + str3 +"\n"+ bookArea.getText()+"\n" + bookTotal2 + amount2 + change2);
             area.setFont(fn);
@@ -875,8 +897,8 @@ public class Cash extends javax.swing.JFrame {
             String str3 = gd.getConnectFromName() +" (" +gd.getConnectFrom()+") " +" To " +gd.getConnectToName() +"( " +
                             gd.getConnectTo() + ") ";
             String bookTotal2 = "Booking Total: " + totalLabel.getText() +"\n";
-            String amount2 = "Amount Paid: " + amountField.getText() +"\n";
-            String change2 = "Amount Changed: " + Double.toString(change);
+            String amount2 = "Amount Paid: " +"Php "+ amountField.getText() +"\n";
+            String change2 = "Amount Changed: " +"Php "+ Double.toString(newChange);
            
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
                 if (pageIndex != 0) {
@@ -918,8 +940,8 @@ public class Cash extends javax.swing.JFrame {
         }else{
             String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
         String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n\n\n\n";
-        String amount1 = "Amount Paid: " + amountField.getText() +"\n";
-        String change1 = "Amount Changed: " + Double.toString(change);
+        String amount1 = "Amount Paid: " +"Php "+ amountField.getText() +"\n";
+        String change1 = "Amount Changed: " +"Php "+ Double.toString(newChange);
         area.setText("FLIGHT SUMMARY\n\n\n" +str1 +bookArea.getText() + "\n"+bookTotal1 + amount1 + change1);
         
         area.setFont(fn);
@@ -938,8 +960,8 @@ public class Cash extends javax.swing.JFrame {
         {
         String str1 = gd.getFromName() +"(" + gd.getFrom()+")" +" To " + gd.getToName() +" (" +gd.getTo() +")" +"\n";
         String bookTotal1 = "Booking Total: " + totalLabel.getText() +"\n";
-        String amount1 = "Amount Paid: " + amountField.getText() +"\n";
-        String change1 = "Amount Changed: " + Double.toString(change);
+        String amount1 = "Amount Paid: " + "Php "+amountField.getText() +"\n";
+        String change1 = "Amount Changed: " +"Php "+ Double.toString(newChange);
            
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
                 if (pageIndex != 0) {

@@ -72,7 +72,7 @@ public class Payment extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("USER ID");
 
-        paymentBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Credit Card", "Cash" }));
+        paymentBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cash", "Credit Card" }));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Mode");

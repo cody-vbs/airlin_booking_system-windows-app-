@@ -282,15 +282,11 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         GetPaymentInfo gp = new GetPaymentInfo();
-       
-        
+    
         Connection con = null;
         Date fDate = birthDayPicker.getDate();        
         DateFormat oDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-       
-        
-        
-        
+     
         //get all values from jframe
         String gender = "";
         String user_id = userIdField.getText();
@@ -315,9 +311,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         }else if(rbFemale.isSelected()){
             gender = "Female";
         }
-        
        
-      
         try {
             con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
             String query = "insert into customer_details(user_id,first_name,middle_name,last_name,birthday,address,gender,pnr)values (?,?,?,?,?,?,?,?)" ;

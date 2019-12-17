@@ -229,7 +229,6 @@ public class RegistrationForm extends javax.swing.JFrame {
                 }else{
                         addData();
                         JOptionPane.showMessageDialog(this, "Your account has been created successfully", "Great!", JOptionPane.INFORMATION_MESSAGE);
-                        new LoginForm().setVisible(true);
                         this.setVisible(false);
                     }
                     

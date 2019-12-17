@@ -46,13 +46,7 @@ public class FlightDBQuery {
             ResultSet rs = state.executeQuery(query);
             String rowData [] = new String [6];
             while(rs.next()){
-              
-              
-             
-             
-             
-              
-              
+           
                 rowData[0] =  rs.getString("flight_no");
                 rowData[1] =  rs.getString("departure");
                 rowData[2] =  rs.getString("arrival");

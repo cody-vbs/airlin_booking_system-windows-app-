@@ -4,14 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SplashClass.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/FlightResult.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/Cash.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/CustomerDetails.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/CreditCard.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SearchFlight.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/FlightDBQuery.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/UpdatePrice.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetPanel.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/UpdateDetails.java</file>
             <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SearchFlightJava.java</file>
-            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SplashScreen.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetInfant.java</file>
             <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/LoginForm.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetSpinnerVal.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/FlightResult.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/CustomerDetails.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetDate.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/MainPage.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetRadioButton.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/RegistrationForm.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetPaymentInfo.java</file>
+            <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/SplashScreen.java</file>
             <file>file:/C:/Users/syd/Documents/NetBeansProjects/airlin_booking_system-windows-app-/src/GetBookDetails.java</file>
         </group>
     </open-files>

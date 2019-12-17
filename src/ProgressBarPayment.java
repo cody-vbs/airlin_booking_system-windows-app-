@@ -12,12 +12,12 @@ import javax.swing.*;
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            String outPut = "Processing your request";
+            String outPut = "Processing your payment";
             label.setText( outPut);
             bar.setValue(++counter);
             if (counter > 50) {
                 timer.stop();
-                JOptionPane.showMessageDialog(null,"Process is completed");
+                JOptionPane.showMessageDialog(null,"Process completed");
 //                new GetPanel().getMyPanel().setVisible(true);
                 
                
